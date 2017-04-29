@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 02 - Exercice 01</title>
+		<script type="text/javascript">
+			function resumer(formulaire) {
+				// Cette fonction affiche dans une boîte de dialogue les condiments sélectionnés.
+				
+				var message = "Hot dog ";
+				var checkboxes = formulaire.elements["condiments"];
+				//compter le nombre de condiments choisis
+				var nb = 0;
+				for (var i = 0; i < checkboxes.length; i++) {
+					if(checkboxes[i].checked) nb++;
+				}
+
+				if(nb) message += " avec ";
+
+				for (var i = 0; i < checkboxes.length; i++) {
+					if(checkboxes[i].checked)
+						message += checkboxes[i].value + ((i < nb-2) ? ", " : ((i < nb-1) ? " et " : "!"));
+				}
+					
+				window.alert(message);
+			}
+
+			function garnir(formulaire) {
+				/*
+				 * Cette fonction provoque le choix de tous les condiments.
+				 * Exécuter cette fonction a le même effet que de cocher toutes les cases à cocher.
+				 */
+				
+				var checkboxes = formulaire.elements["condiments"];
+				for (var i = 0; i < checkboxes.length; i++) {
+					checkboxes[i].checked = true;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form action="" method="" name="formHotDog">
+			<fieldset>
+				<legend>Qu'aimez-vous mettre dans votre hot dog ?</legend>
+				 
+				<input type="checkbox" name="condiments" id="chkMoutarde" value="de la moutarde"/>
+				<label for="chkMoutarde"> de la moutarde</label><br />
+				
+				<input type="checkbox" name="condiments"  id="chkKetchup" value="du ketchup"/>
+				<label for="chkKetchup"> du ketchup</label><br />
+
+				<input type="checkbox" name="condiments"   id="chkRelish" value="de la relish"/>
+				<label for="chkRelish"> de la relish</label><br />
+
+				<input type="button" value="Garni!" onclick="garnir(this.form);" />
+
+				<input type="button" value="Résumer les préférences" onclick="resumer(this.form);" />
+			</fieldset>
+		</form>
+	</body>
+</html>

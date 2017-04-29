@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>removeChild</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : var ancienEnfant = element.removeChild(enfant) 
+			//			 Retire un nœud enfant de l'abre DOM.
+			//			 enfant : est le nœud enfant à retirer du DOM.
+    		//			 element: est le nœud parent de l'enfant à retirer.
+    		//			 ancienEnfant : conserve une référence au nœud enfant retiré.
+    		//							Le nœud retiré existe toujours en mémoire, mais
+    		//							ne fait plus partie du DOM. Il peut être
+    		//							réutilisé plus tard dans votre code, via la
+    		//							référence à l'objet ancienEnfant.
+
+
+			function removeDiv2() {
+				var el = document.getElementById('div2');
+				if(el != null)
+					el = el.parentNode.removeChild(el);
+  			}
+		</script>
+		<div id="div1">
+			<div id="div2">Contenu de div2</div>
+		</div>
+		<form name="myForm">
+			<input type="button" value="Supprimer div2" onclick="removeDiv2();"/>
+		</form>
+	</body>
+</html>

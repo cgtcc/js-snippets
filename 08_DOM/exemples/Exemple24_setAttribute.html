@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>setAttribute()</title>
+		<script type="text/javascript">
+			// Syntaxe : element.setAttribute(nom, valeur);
+			// Ajoute un nouvel attribut ou change la valeur d'un attribut
+			// existant pour l'élément spécifié. 
+			//		nom    : est le nom du nouvel attribut sous forme de chaîne.
+			//		valeur : est la nouvelle valeur désirée de l'attribut. 
+			window.onload = function () {
+				var a = document.getElementById("monLien");
+				a.innerHTML = "Youtube";
+				a.setAttribute("href", "http://www.youtube.ca");
+				a.setAttribute("target", "_blank");
+			};
+		</script>
+	</head>
+	<body>
+		<a id="monLien" href="http://www.google.ca" style="color: green;">Google</a>
+ 	</body>
+</html>

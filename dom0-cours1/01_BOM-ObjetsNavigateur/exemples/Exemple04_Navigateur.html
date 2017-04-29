@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>L'objet navigator : Informations sur le navigateur</title>
+	<script type="text/javascript">
+		function printPropValue(str){
+			document.write("<strong>" + str + "</strong> : " + eval(str) + "<br />");
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript">
+		printPropValue("navigator.appCodeName");
+    	//Renvoie le nom de code interne du navigateur courant. 
+
+		printPropValue("navigator.appName");
+    	//Renvoie le nom officiel du navigateur. 
+
+		printPropValue("navigator.appVersion");
+    	//Renvoie la version du navigateur sous la forme d'une chaîne. 
+
+		printPropValue("navigator.buildID");
+    	//Renvoie l'identifiant de compilation du navigateur (par exemple « 2006090803 ») 
+
+		printPropValue("navigator.cookieEnabled");
+    	//Renvoie un booléen indiquant si les cookies sont activés ou non dans le navigateur. 
+
+		printPropValue("navigator.language");
+    	//Renvoie une chaîne représentant la langue utilisée par le navigateur. 
+
+		printPropValue("navigator.mimeTypes");
+    	//Renvoie une liste des types MIME gérés par le navigateur. 
+
+		printPropValue("navigator.onLine");
+    	//Renvoie un booléen indiquant si le navigateur est en mode en ligne. 
+
+		printPropValue("navigator.oscpu");
+    	//Renvoie une chaîne indiquant le système d'exploitation. 
+
+		printPropValue("navigator.platform");
+    	//Renvoie une chaîne représentant la plateforme du navigateur. 
+
+		printPropValue("navigator.plugins");
+    	//Renvoie un tableau listant les plugins installés dans le navigateur. 
+
+		printPropValue("navigator.product");
+    	//Renvoie le nom de produit du navigateur (par exemple « Gecko ») 
+
+		printPropValue("navigator.productSub");
+    	//Renvoie le numéro de compilation du produit (par exemple « 20060909 ») 
+
+		printPropValue("navigator.securityPolicy");
+    	//Renvoie une chaîne vide. Dans Netscape 4.7x, renvoyait « US & CA domestic policy »
+    	// ou « Export policy ». 
+
+		printPropValue("navigator.userAgent");
+    	//Renvoie la chaîne d'identification d'agent utilisateur pour le navigateur courant. 
+
+		printPropValue("navigator.vendor");
+    	//Renvoie le nom du vendeur du navigateur (par exemple « Netscape6 ») 
+
+		printPropValue("navigator.vendorSub");
+    	//Renvoie le numéro de version du vendeur (par exemple « 6.1 ») 		
+	</script>
+</body>
+</html>

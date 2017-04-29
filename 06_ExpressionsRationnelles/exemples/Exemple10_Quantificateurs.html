@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Les quantificateurs ? + *</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Les quantificateurs permettent de dire combien de fois un
+			// caractère doit être recherché. Il est possible de dire qu'un
+			// caractère peut apparaître 0 ou 1 fois,
+			// 1 fois ou une infinité de fois,
+			// ou même, avec des accolades, de dire qu'un caractère peut être
+			// répété 3, 4, 5 ou 10 fois.
+
+			// Les trois symboles quantificateurs
+			//		? : ce symbole indique que le caractère qui le précède
+			//			peut apparaître 0 ou 1 fois ;
+			//		+ : ce symbole indique que le caractère qui le précède
+			//			peut apparaître 1 ou plusieurs fois ;
+			//		* : ce symbole indique que le caractère qui le précède
+			//			peut apparaître 0, 1 ou plusieurs fois.
+			
+			write(/Javascri?pt/.test("Javascript"));      // Affiche true
+			write(/Javascri?pt/.test("Javascrpt"));       // Affiche true
+			
+			write(/Javascri+pt/.test("Javascrpt"));       // Affiche false
+			write(/Javascri+pt/.test("Javascript"));      // Affiche true
+			write(/Javascri+pt/.test("Javascriiiiiipt")); // Affiche true
+			
+			write(/Javascri*pt/.test("Javascrpt"));       // Affiche true
+			write(/Javascri*pt/.test("Javascript"));      // Affiche true
+			write(/Javascri*pt/.test("Javascriiiiiipt")); // Affiche true
+			
+		</script>
+	</body>
+</html>

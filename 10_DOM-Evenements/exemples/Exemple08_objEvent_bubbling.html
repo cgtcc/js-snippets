@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>L'objet Event</title>
+	<style type="text/css">
+		div, span { padding : 20px; }
+		#monDiv   { background-color: #B0B0B0; }
+		#monSpan  { background-color: #C0C0C0;	}
+	</style>
+	<script type="text/javascript" src="events.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", function(){
+
+			//Phase de bouillonnement
+			var useCapture = false;
+
+			document.getElementById("monSpan").addEventListener("click", afficherMsg, useCapture);
+			document.getElementById("monDiv").addEventListener("click", afficherMsg, useCapture);
+
+			document.getElementById("clear").addEventListener("click", function(){
+				document.getElementById("txt").value = "";
+			}, false);
+
+		},false);
+
+		function afficherMsg(evt) {
+			var zoneText = document.getElementById("txt");
+			
+			zoneText.value += "Évènement intercepté :\n" +
+							  "event.currentTarget = " + evt.currentTarget + "\n" +
+							  "event.target        = " + evt.target + "\n" +
+							  "event.eventPhase    = ";
+
+			switch(evt.eventPhase) {
+				// Phase 1
+				case Event.CAPTURING_PHASE : zoneText.value += "capture";        break;
+				// Phase 2
+				case Event.AT_TARGET :       zoneText.value += "cible";          break;
+				// Phase 3
+				case Event.BUBBLING_PHASE :  zoneText.value += "bouillonnement"; break;
+			}
+
+			zoneText.value += "\n";
+		}
+
+	</script>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>Évènements capturés lors de la phase de <strong>bouillonnement</strong></legend>
+			<div id="monDiv">
+				<span id="monSpan">Le premier span</span>
+			</div>
+			<textarea id="txt" cols="50" rows="8"></textarea><br />
+			<input type="button" id="clear" value="Effacer" />
+		</fieldset>
+	</form>
+</body>
+</html>

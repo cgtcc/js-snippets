@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>addEventListener()</title>
+	<script type="text/javascript">
+		// Syntaxe : element.addEventListener(type, listener, useCapture);
+		// addEventListener permet l'assignation de gestionnaires d'évènements
+		// sur un élément cible. La cible d'un évènement peut être un nœud dans
+		// un document, le document lui-même, un élément window ou un objet XMLHttpRequest.
+		//		type       : étant le type d'événement ("load", "click", ...),
+		//		listener   : la fonction à exécuter au déclenchement de l'événement,
+		//		useCapture : un booléen indiquant si l'on souhaite utiliser le mode
+		//					 capturant ou non.
+
+		window.addEventListener("load", documentLoaded);
+
+		function documentLoaded() {
+			window.alert("La page est complètement chargée.");
+		}
+	</script>
+</head>
+<body>
+	<img src="http://mlahlou.webdev.cmaisonneuve.qc.ca/JS/beach.jpg"
+		 title="Belle plage" />
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>getElementsByTagName()</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			// Syntaxe : liste = element.getElementsByTagName(balise); 
+			//			 Retourne une liste des éléments portant le nom
+			//			 de balise donné. La recherche porte sur le sous-arbre
+			//			 de l'élément spécifié, à l'exception de cet élément
+			//			 lui-même. La liste retournée est live, c'est à dire
+			//			 qu'elle se met à jour automatiquement à chaque changement
+			//			 de l'arbre DOM. Par conséquence, il n'est pas nécessaire
+			//			 d'appeller plusieurs fois element.getElementsByTagName
+			//			 avec le même élément et le même paramètre.
+			//
+			//			 liste   : est une liste de nœuds NodeList contenant les
+			//					   éléments trouvés, dans l'ordre dans lequel ils
+			//					   apparaissent dans le sous-arbre.
+			//			 element : est l'élément depuis lequel la recherche doit
+			//					   commencer. Notez que seuls les descendants de cet
+			//					   élément feront partie des résultats, mais pas
+			//					   l'élément lui-même.
+			//			 balise  : est le nom qualifié à rechercher. La chaîne
+			//					   spéciale "*" représente tous les éléments possibles.
+			//
+			// element.getElementsByTagName est similaire à document.getElementsByTagName,
+			// la seule différence étant que la recherche est ici réduite aux éléments
+			// descendants de l'élément spécifié.
+
+			window.onload = function() {
+				window.alert(document.getElementsByTagName("p") + " (" +
+							 document.getElementsByTagName("p").length + " elements)");
+			}
+		</script>
+		<p>Mon premier paragraphe</p>
+		<p>Mon deuxième paragraphe</p>
+		<p>Mon troisième paragraphe</p>
+	</body>
+</html>

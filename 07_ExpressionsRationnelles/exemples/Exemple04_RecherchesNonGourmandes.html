@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Les recherches non-gourmandes</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// En Javascript, les regex sont généralement gourmandes, ce qui veut
+			// dire que lorsqu'on utilise un quantificateur comme le +,
+			// le maximum de caractères est recherché, alors que ce n'est pas toujours
+			// le comportement souhaité.
+			// Petite mise en lumière : nous allons construire une regex qui va extraire
+			// l'adresse Web à partir de cette portion de HTML sous forme de chaîne de caractères :
+
+			var lien1 = '<a href="www.mehdilahlou.info">Mon site</a>';
+			/<a href="(.+)">/.exec(lien1);
+			write(RegExp.$1); // www.mehdilahlou.info
+
+			var lien2 = '<a href="www.mehdilahlou.info"><strong class="web">Mon site</strong></a>';
+			/<a href="(.+)">/.exec(lien2);
+			window.alert(RegExp.$1); // www.mehdilahlou.info"><strong class="web
+
+			// La RegExp va trouver la partie "www.mehdilahlou.info"><strong class="web" :
+			// il cherche jusqu'à ce qu'il tombe sur la dernière apparition des caractères « "> ».
+			// Pour pallier ce problème, nous allons écrire le quantificateur directement suivi 
+			// du point d'interrogation. Le point d'interrogation va faire en sorte que la recherche
+			// soit moins gourmande et s'arrête une fois que le minimum requis est trouvé,
+			// d'où l’appellation non-greedy (« non gourmande »).
+
+			/<a href="(.+?)">/.exec(lien2);
+			window.alert(RegExp.$1); // www.mehdilahlou.info
+
+		</script>
+	</body>
+</html>

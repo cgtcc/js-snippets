@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Exercice 04</title>
+	<script type="text/javascript">
+	function checkForm(f) {
+		for (var i=0; i<f.elements["colors"].options.length; i++) {
+			var element = f.elements["colors"].options[i];
+			if (element.selected && element.value != "") {
+				return true;
+			}
+		}
+		window.alert("Aucune couleur n'a été sélectionnée !");
+		f.elements["colors"].focus();
+		return false;
+	}
+	</script>
+</head>
+<body>
+	<form action="" method="" onsubmit="return checkForm(this);">
+		<fieldset>
+			<legend>Sélection obligatoire d'éléments d'une liste</legend>
+
+			<select name="colors" size="9" multiple="multiple">
+				<option value="">Sélectioner une couleur</option>
+				<option value="R">rouge</option>
+				<option value="V">vert</option>
+				<option value="B">bleu</option>
+				<option value="">-------</option>
+				<option value="C">cyan</option>
+				<option value="M">magenta</option>
+				<option value="J">jaune</option>
+				<option value="N">noir</option>
+			</select>
+
+			<input type="submit" value="Envoyer les données" />
+		</fieldset>
+	</form>
+</body>
+</html>

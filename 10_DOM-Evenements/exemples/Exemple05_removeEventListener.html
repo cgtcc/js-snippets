@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>removeEventListener()</title>
+	<script type="text/javascript" src="events.js"></script>
+	<script type="text/javascript">
+		// Syntaxe : element.removeEventListener(type, listener, useCapture) 
+		// removeEventListener() permet de retirer des gestionnaires d'événements
+		// (objets EventListener) de la cible de l'événement.
+		// Les paramètres doivent être les mêmes que ceux passés au addEventListener
+
+		window.addEventListener("load", function(){
+			var clickMe = document.getElementById("clickMe");
+			clickMe.style.cursor = "pointer";
+			clickMe.addEventListener("click", afficherMsg, false);
+		},false);
+
+		function afficherMsg() {
+			window.alert("On vient de me cliquer !");
+			var clickMe = document.getElementById("clickMe");
+			clickMe.removeEventListener("click", afficherMsg, false);
+			clickMe.style.cursor = "auto";
+			clickMe.innerHTML = "Je ne suis plus à l'écoute de l'évènement du clic !";
+		}
+	</script>
+</head>
+<body>
+	<span id="clickMe">Je suis à l'écoute de l'évènement du clic !</span>
+</body>
+</html>

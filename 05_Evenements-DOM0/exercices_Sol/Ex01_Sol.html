@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Exercice 01</title>
+		<script type="text/javascript">
+			function loadURL(list) {
+				var url = list.options[list.selectedIndex].value;
+				if (url != "") {
+					location.href = url;
+				}
+			}
+			var categories = {
+				"search"      : "Moteurs de recherche",
+			    "browsers"    : "Navigateurs"
+			};
+
+			window.onload = function(){
+				var i = 0;
+				var list = document.forms[0]["categories"];
+				list.options[0] = new Option("Sélectionnez la catégorie", "");
+				for (var cat in categories) {
+					list.options[++i] = new Option(categories[cat], cat);
+				}
+			}
+
+			var data = {
+				"search" : [
+					{"title": "Google", "url": "http://www.google.com/"},
+					{"title": "MSN", "url": "http://search.msn.com/"},
+					{"title": "Yahoo", "url": "http://yahoo.com"}
+				],
+				"browsers" : [
+					{"title": "Firefox", "url": "http://www.mozilla.com/firefox/"},
+					{"title": "Chrome" , "url": "http://www.google.com/intl/fr/chrome/browser/?hl=fr"},
+					{"title": "Opera"  , "url": "http://www.opera.com/"},
+					{"title": "Safari" , "url": "http://www.apple.com/ca/fr/safari/"},
+					{"title": "IE"     , "url": "http://windows.microsoft.com/fr-CA/internet-explorer/download-ie"}
+				]
+			};
+
+			function loadElements(f) {
+				with (f) {
+					var catOption = elements["categories"].options[elements["categories"].selectedIndex]; 
+					var category = catOption.value;
+					if (category != "") {
+						//Retourne le tableau de liens de la catégorie sélectionnée
+						var links = data[category];
+						elements["urls"].options.length = 0;
+						elements["urls"].options[0] = new Option("Sélectionnez : "+catOption.text, "#");
+						for (var i=0; i<links.length; i++) {
+							elements["urls"].options[elements["urls"].options.length] = new Option(links[i].title, links[i].url);
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form action="" methode="get">
+			<fieldset>
+				<legend>Choisissez votre lien</legend>
+
+				<select name="categories" onchange="loadElements(this.form);"></select>
+				<select name="urls" onchange="loadURL(this);"></select>
+			</fieldset>
+		</form>
+	</body>
+</html>

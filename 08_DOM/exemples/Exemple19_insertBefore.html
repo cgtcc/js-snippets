@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>insertBefore</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : var insertElement = parentElement.insertBefore(nouvelElement, refElement)
+			//			 Insère le nœud spécifié juste avant un élément de référence parmi
+			//			 les enfants du nœud courant.
+			//			 insertElement : le nœud inséré, c'est-à-dire nouvelElement
+			//			 parentElement : le parent du nœud nouvellement inséré.
+			//			 nouvelElement : le nœud à insérer.
+			//			 refElement    : le nœud avant lequel nouvelElement est inséré. Si refElement
+			//							 retourne une valeur null, le nouvelElement est inséré à
+			//							 la fin de la liste des noeuds enfant du parentElement.
+			//
+			// Il n'existe pas de méthode insertAfter pour insérer un nœud après un autre, cependant
+			// on peut l'émuler avec une combinaison de insertBefore et nextSibling.
+			window.onload = function () {
+				var para0 = document.createElement("p")
+				para0.appendChild(document.createTextNode("Contenu du paragraphe 0"));
+				
+				var para1 = document.getElementById("p1");
+				para1.parentNode.insertBefore(para0, para1);
+
+				var para2 = document.createElement("p")
+				para2.appendChild(document.createTextNode("Contenu du paragraphe 2"));
+				para1.parentNode.insertBefore(para2, para1.nextSibling);				
+  			}
+		</script>
+		<div>
+			<p id="p1">Contenu du paragraphe 1</p>
+			<p id="p3">Contenu du paragraphe 3</p>
+		</div>
+	</body>
+</html>

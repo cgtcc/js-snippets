@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+        "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+  <HEAD>
+    <TITLE>The document title</TITLE>
+  </HEAD>
+  <BODY>
+    
+<form name="termes">
+<label for="tos">Acceptez-vous les termes?</label>
+ <input type="checkbox" name="tos"><br />
+ <input type="submit" onclick="validate()">
+</form>
+
+
+<script type="text/javascript">
+  function validate(){
+    if (document.termes.tos.checked){
+      alert('Vous avez accepté les termes et conditions.  Merci!');
+      return false;
+    } else {
+      alert ('Vous devez accepter les termes et conditions.'); 
+      return true;
+    }
+  }
+</script>
+  </BODY>
+</HTML>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			img {
+				position:relative;
+				top:5px;
+			}
+		</style>
+		<script>
+		window.onload = function(){
+			document.forms[0].url.onkeyup = majLogo;
+		};
+
+		function majLogo(){
+			
+			/(?:(https|http|ftp):\/\/|(.*))/.exec(document.forms[0].url.value);
+			
+			var imgURL = "./images/";
+
+			switch(RegExp.$1) {
+				case "https" : imgURL += "https.jpg"; break;
+				case "http"  : imgURL += "http.jpg" ; break;
+				case "ftp"   : imgURL += "ftp.png"  ; break;
+				default      : imgURL += "QuestionMark.png";
+			}
+			//console.log(imgURL);
+			document.forms[0].logo.src = imgURL;
+
+		}
+
+		</script>
+
+	</head>
+	<body>
+		<form>
+			<fieldset>
+				<legend>Protocole</legend>
+				<img name="logo" src="./images/QuestionMark.png" height="20px" />
+				<input type="text" name="url" placeholder="Entrez votre url ici">
+			</fieldset>
+		</form>
+	</body>
+</html>

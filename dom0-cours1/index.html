@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Form Example</title>
+    <script>
+        function display() {
+
+            var w = 200; var h = 200; var left = Number((screen.width / 2) - (w / 2)); var top = Number((screen.height / 2) - (h / 2));
+
+
+            popUp = window.open('fenetre.html', 'NewWin', 'toolbar=no,status=no,width=400,height=400,top=' + top + ', left=' + left);
+
+
+            message = "<ul><li><b>NAME: </b>" + document.form1.yourname.value;
+            message += "<li><b>ADDRESS: </b>" + document.form1.address.value;
+            message += "<li><b>PHONE: </b>" + document.form1.phone.value + "</ul>";
+            popUp.document.write(message);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Form Example</h1>
+    Enter the following information. When you press the Display button, the data you entered will be displayed in a pop-up window.
+    <form name="form1" action="fenetre.html" method="post">
+        <p><b>Name:</b> <input type="text" size="20" name="yourname">
+        </p>
+        <p><b>Address:</b> <input type="text" size="30" name="address">
+        </p>
+        <p><b>Phone: </b> <input type="text" size="15" name="phone">
+        </p>
+        <p><input type="button" value="Envoyer un message au popup" onClick="display();"></p>
+    </form>
+</body>
+
+</html>

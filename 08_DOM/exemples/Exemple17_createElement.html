@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>createElement</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : element = document.createElement(tagName);
+			//			 Crée un élément du type spécifié. 
+			//			 element : est l'objet element créé.
+    		//			 tagName : est une chaîne spécifiant le type d'élément
+    		//					   à créer. L'attribut nodeName de l'élément est
+    		//					   initialisée avec la valeur de tagName. 
+    		
+			window.onload = function () {
+				var paragraphe = document.createElement("p");
+				paragraphe.innerHTML = "Je suis un paragraphe créé dynamiquement !";
+				document.body.appendChild(paragraphe);
+  			}
+		</script>
+	</body>
+</html>

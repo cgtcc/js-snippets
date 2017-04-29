@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>changer image click lien</title>
+
+	<script type="text/javascript">
+		var images = new Array(3);
+		for (var i = 0; i < images.length; i++);
+		images[i] = new Image();
+
+		images[0].src = "_images/the1.jpg";
+		images[1].src = "_images/the2.jpg";
+		images[2].src = "_images/the3.jpg";
+
+
+
+		function changerImage() {
+			var n = 0;
+			n = ++n % images.length;
+			window.document.animationDe.src = images[n].src;
+			return false;
+		};
+	</script>
+</head>
+
+<body>
+	<img src="_images/the1.jpg" name="animationDe" id="image">
+
+
+	<div>
+		<a href="" onclick="changerImage()">Image suivante</a>
+	</div>
+</body>
+
+</html>

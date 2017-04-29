@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 07 - Exercice 05</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				document.myForm.txtIn.value = "        J'ai des espaces au début et à la fin         ";
+			};
+
+			function trim() {
+			    var src  = document.myForm.txtIn;
+				var dest = document.myForm.txtOut;		    
+			    dest.value = "'"+src.value.replace(/(^[ \t]*)|([ \t]*$)/g, "")+"'";
+			}
+		</script>
+
+	</head>
+	<body>
+		<form name="myForm" action="" method="">
+			<fieldset>
+		    <label for="txtIn">Entrée : </label><input type="text" name="txtIn" id="txtIn" size="35" />
+		    <input type="button" value="Supprimer les espaces non-significatifs" onclick="trim();" />&nbsp;&nbsp;
+		    <label for="txtOut">Sortie : </label><input type="text" name="txtOut" size="35" />
+			</fieldset>
+		</form>
+	</body>
+</html>

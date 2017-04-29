@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>childNodes</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : var collNoeuds = elementDeReference.childNodes; 
+			//			 Renvoie une collection de nœuds enfants de l'élément donné.
+			//
+			//			 collNoeuds est une collection ordonnée d'objets node qui sont
+			//			 enfants de l'élément courant. Si l'élément n'a pas d'enfants,
+			//			 collNoeuds ne contiendra aucun nœud.
+			//			 La variable collNoeuds stocke la liste des nœuds renvoyée par
+			//			 childNodes. Cette liste est de type NodeList.
+			//			 L'attribut childNodes est en lecture seule.
+
+			window.onload = function() {
+				var tr = document.getElementById("ligne1");
+				var cellules = tr.childNodes;
+				var msg = "";
+
+				for (var i = 0; i < cellules.length; i++) {
+					msg += cellules[i].firstChild.nodeValue + " ";
+				};
+				window.alert(msg);
+			}
+		</script>
+		<table>
+			<tr id="ligne1"><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        function startTime() {
+            var time = new Date();
+            var h = time.getHours();
+            var m = time.getMinutes();
+            var s = time.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('heure').innerHTML =
+                h + " heures " + m + " et " + s + " secondes";
+            var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };  // ajoute un  zero devant les nombres si < 10
+            return i;
+        }
+    </script>
+
+
+</head>
+
+<body onload="startTime()">
+    <div style="border:1px solid #000!important;text-align:center;padding:20px 10px">
+        <div id="heure" style="font-size:200%;"></div>
+    </div>
+</body>
+
+</html>

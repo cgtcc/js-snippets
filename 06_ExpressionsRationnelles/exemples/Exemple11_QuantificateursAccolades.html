@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Les quantificateurs { }</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// À la place des trois symboles vus précédemment, on peut utiliser
+			// des accolades pour définir explicitement combien de fois
+			// un caractère peut être répété. Trois syntaxes sont disponibles :
+			//		{n} : le caractère est répété n fois ;
+			//	  {n,m} : le caractère est répété de n à m fois.
+			//			  Par exemple, si on a {0, 5}, le caractère peut être
+			//			  présent de 0 à 5 fois ;
+			//	   {n,} : le caractère est répété de n fois à l'infini.
+			
+			// {n}
+			write(/Go{2}gle/.test("Gogle"));   // Affiche false
+			write(/Go{2}gle/.test("Google"));  // Affiche true
+			write(/Go{2}gle/.test("Gooogle")); // Affiche false
+			
+			// {n,m}
+			write(/Go{2,4}gle/.test("Gogle"));    // Affiche false
+			write(/Go{2,4}gle/.test("Google"));   // Affiche true
+			write(/Go{2,4}gle/.test("Gooogle"));  // Affiche true
+			write(/Go{2,4}gle/.test("Goooogle")); // Affiche true
+			write(/Go{2,4}gle/.test("Gooooogle"));// Affiche false
+			
+			// {n,}
+			write(/Go{2,}gle/.test("Ggle"));// Affiche false
+			write(/Go{2,}gle/.test("Google"));// Affiche true
+			write(/Go{2,}gle/.test("Goooooooooooooooooogle"));// Affiche true
+		</script>
+	</body>
+</html>

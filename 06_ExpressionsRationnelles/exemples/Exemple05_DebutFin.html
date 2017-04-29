@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Début ^ et fin $</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Début et fin de chaîne
+			// Les symboles ^ et $ permettent respectivement de représenter
+			// le début et la fin d'une chaîne de caractères.
+			// Si un de ces symboles est présent, il indique à la regex que
+			// ce qui est recherché commence ou termine la chaîne.
+			// Cela délimite la chaîne en quelque sorte :
+			
+			write(/^océan/.test("Il est beau l'océan bleu."));    // Affiche false
+			write(/^océan/.test("océan bleu, que tu es beau !")); // Affiche true
+			
+			write(/bleu$/.test("Il est beau l'océan bleu."));     // Affiche false
+			write(/bleu.$/.test("Il est beau l'océan bleu."));    // Affiche true
+			
+			write(/^Il .$/.test("Il est beau l'océan bleu."));    // Affiche false
+			write(/^Il est beau l'océan bleu.$/.test("Il est beau l'océan bleu.")); // Affiche true
+		</script>
+	</body>
+</html>

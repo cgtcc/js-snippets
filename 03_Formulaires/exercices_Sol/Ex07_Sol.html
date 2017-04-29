@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Exercice 07</title>
+	<script type="text/javascript">
+	function checkform(f) {
+		var errorText = "";
+		var checkedGroups = "";
+		for (var i=0; i<f.elements.length; i++) {
+			var element = f.elements[i];
+			switch (element.type) {
+				case "text": 
+				case "textarea":
+				case "password":
+				if (element.value == "") {
+					errorText += element.name + "\n";
+				}
+				break;
+				case "checkbox":
+				if (!element.checked) {
+					errorText += element.name + "\n";
+				}
+				break;
+				case "radio":
+				var group = f.elements[element.name];
+				if (checkedGroups.indexOf("[" + element.name + "]") > -1) {
+					continue;
+				} else {
+					checkedGroups += "[" + element.name + "]";
+				}
+				var groupOk = false;
+				for (var j=0; j<group.length; j++) {
+					if (group[j].checked) {
+						groupOk = true;
+						break;
+					}
+				}
+				if (!groupOk) {
+					errorText += element.name + "\n";
+				}
+				break;
+				case "select-one":
+				case "select-multiple":
+				var selectOk = false;
+				for (var j=0; j<element.options.length; j++) {
+					var item = element.options[j];
+					if (item.selected && item.value != "") {
+						selectOk = true;
+						break;
+					}
+				}
+				if (!selectOk) {
+					errorText += element.name + "\n";
+				}
+				break;
+			}
+		}
+		if (errorText == "") {
+			return true;
+		} else {
+			window.alert(
+				"Les champs suivant n'ont pas été correctement renseignés:\n\n"
+				+ errorText);
+			return false;
+		}
+	}
+	</script>
+	<form action="" method="" onsubmit="return checkform(this);">
+		<fieldset>
+			<legend>Validation d'un formulaire</legend>
+			<label for="name">Votre nom : </label>
+			<input type="text" name="name" id="name"/><br />
+			
+			<label for="terms">Termes et conditions : </label>
+			<input type="checkbox" name="terms" id="terms"/><br />
+
+			<input type="radio" name="colorradio" id="colorradioR" value="R" />
+			<label for="colorradioR">Rouge</label>
+			
+			<input type="radio" name="colorradio" id="colorradioV" value="V" />
+			<label for="colorradioV">Vert</label>
+
+			<input type="radio" name="colorradio" id="colorradioB" value="B" />
+			<label for="colorradioB">Bleu</label>
+			<br />
+
+			<select name="colorlist">
+				<option value="">Sélectionner une couleur</option>
+				<option value="R">Rouge</option>
+				<option value="V">Vert</option>
+				<option value="B">Bleu</option>
+			</select>
+			<br />
+			<input type="submit" value="Envoyer les données" />
+		</fieldset>
+	</form>

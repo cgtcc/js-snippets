@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>replaceChild</title>
+		<script type="text/javascript" src="io.js"></script>
+		<script type="text/javascript">
+			// Syntaxe : noeudRemplacé = noeudParent.replaceChild(nouvelEnfant, ancienEnfant);
+			//			 Remplace un nœud enfant de l'élément courant par un autre nœud. 
+			//			 nouvelEnfant : est le nouveau nœud qui remplacera ancienEnfant.
+			//							Si nouvelEnfant existe déjà dans le DOM, il sera d'abord enlevé.
+    		//			 ancienEnfant : est le nœud existant à remplacer.
+    		//			 noeudRemplacé: est le nœud remplacé. C'est le même nœud que ancienEnfant. 
+    		
+			function alterner() {
+				var td1 = document.getElementById("td1");
+				var td2 = document.getElementById("td2");
+				var oldTd1Content = td1.replaceChild(td2.firstChild, td1.firstChild);
+				td2.appendChild(oldTd1Content);
+  			}
+		</script>
+	</head>
+	<body>
+		<table style="border-width: 1px; border-style:solid; border-color:black;">
+			<tr>
+				<td id="td1"><a href="http://www.google.ca"   alt="Google"  >Google  </a><td>
+				<td id="td2"><a href="http://www.linkedin.ca" alt="LinkedIn">LinkedIn</a><td>
+			</tr>
+		</table>
+		<form>
+			<input type="button" id="btn" value="Alterner le contenu des cellules" onclick="alterner();"/>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Formulaire type</title>
+	</head>
+	<body>
+		<form action  = "Exemple02_formulaireType.html"
+			  method  = "get"
+			  enctype = "application/x-www-form-urlencoded">
+			<!-- Premier groupe de composants-->
+			<fieldset>
+				<legend><b>Vos coordonnées</b></legend>
+				<label for="nom">Nom : </label>
+				<input type="text" name="nom" id="nom" size="40" maxlength="256" value="votre nom" />
+				<br /><label for="prenom">Prénom : </label>
+				<input type="text" name="prenom" id="prenom" size="40" maxlength="256" value="votre prénom" />
+				<br /><label for="mail">Mail : </label>
+				<input type="text" name="mail" id="mail" size="40" maxlength="256" value="votre mail" />
+				<br /><label for="code">Code : </label>
+				<input type="password" name="code" id="code" size="40" maxlength="6" /><br />
+				<input type="radio" name="sexe" id="sexe_homme" value="homme" />
+				<label for="sexe_homme">Homme</label><br />
+				<input type="radio" name="sexe" id="sexe_femme" value="femme" />
+				<label for="sexe_femme">Femme</label><br />
+				<label for="pays">Pays :  </label>
+				<select name="pays" id="pays" size="1">
+					<option value="Canada" >Canada </option>
+					<option value="France" >France </option>
+					<option value="Maroc"  >Maroc  </option>
+					<option value="Espagne">Espagne</option>
+				</select>
+			</fieldset>
+			<!-- Deuxième groupe de composants-->
+			<fieldset>
+				<legend><b>Vos goûts</b></legend>
+				<input type="checkbox" name="pomme" id="pomme" value="pomme" />
+				<label for="pomme">Pomme</label><br />
+				<input type="checkbox" name="poire" id="poire" value="poire" />
+				<label for="poire">Poire</label><br />
+				<input type="checkbox" name="mangue" id="mangue" value="mangue" checked="checked"/>
+				<label for="mangue">Mangue</label><br />
+				<textarea name="gouts" cols="50" rows="5">Décrivez vos goûts en détail</textarea>
+				<br /><br />
+			</fieldset>
+			<!-- Troisième groupe de composants-->
+			<fieldset>
+				<legend><b>Envoyez nous votre photo</b></legend>
+				<input type="file" name="fichier" accept="image/jpeg" />
+				<input type="hidden" name="MAX_FILE_SIZE" value="10000" />
+				<br /><br />
+				<input type="reset" value="Effacer" />
+				&nbsp;&nbsp;&nbsp;<input type="submit" value="Envoyer" />
+				<br /><br />
+			</fieldset>
+		</form>
+	</body>
+</html>

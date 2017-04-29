@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<titleExercice 01</title>
+	<script type="text/javascript">
+		
+		//Formulaire auto-maintenable
+		window.onload = function(){
+			document.forms[0].elements["terms"].checked =
+				(window.location.search.indexOf("terms") != -1);
+		};
+		
+
+		function checkForm(f) {
+			if (!f.elements["terms"].checked) {
+				window.alert("Vous devez accepter les conditions d'utilisation !");
+				f.elements["terms"].focus();
+				return false;
+			} else {
+				return true;
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="" method="" onsubmit="return checkForm(this);">
+		<fieldset>
+			<legend>Case à cocher obligatoire</legend>
+
+			<input type="checkbox" name="terms" id="terms" />
+			<label for="terms">Conditions d'utilisation</label><br />
+			<input type="submit" value="Envoyer les données" />
+		</fieldset>
+	</form>
+</body>
+</html>

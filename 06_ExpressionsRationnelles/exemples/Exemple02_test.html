@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>RegExp.test()</title>
+		<script type="text/javascript" src="io.js"></script>
+		<script type="text/javascript">
+			//Syntaxe : regexp.test([str]) 
+			//			regexp : L'expression régulière (Peut être une variable ou un literal).
+			//			str    : La chaine de caractères dans laquelle, on veut effectuer 
+			//					 la recherche.
+			
+			//En cas de réussite, la méthode test() renvoie true;
+			//dans le cas contraire, elle renvoie false.
+			
+			function testInput(regexp, str){
+				var midString;
+				if (regexp.test(str)) {
+					midString = " contient ";
+				} else {
+					midString = " ne contient pas ";
+				}
+				document.write ('"' + str + '"' + midString + ': "' + regexp.source + '"' + "<br />");
+			}
+			
+		</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			testInput(/océan/, "L'océan bleu.");			
+			
+			//Pour vos tests, n'hésitez pas à utiliser une syntaxe plus concise, comme ceci :
+			write(/océan/.test("L'océan bleu.")); // Affiche true
+			write(/océan/.test("Le sable jaune.")); // Affiche false
+			
+		</script>
+	</body>
+</html>

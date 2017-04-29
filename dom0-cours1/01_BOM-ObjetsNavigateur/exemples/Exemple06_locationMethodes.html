@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>L'objet location : Méthodes de manipulation de l'url</title>
+	<script type="text/javascript">
+		function searchGoogle(){
+			window.location.href = "http://www.google.com:80/search?q="
+								 + window.document.myForm.query.value;
+		}
+
+		function assignURL(){
+			window.location.assign(window.document.myForm.url2assign.value);
+		}
+
+		function replaceURL(){
+			window.location.replace(window.document.myForm.url2replaceWith.value);
+		}
+
+		function reloadURL(){
+			//Paramètre : true -> Forcer le téléchargement depuis le serveur
+			window.location.reload(true);
+		}
+	</script>
+</head>
+<body>
+	<form name="myForm">
+		<input type="text" name="query" value="Apprendre javascript" />
+		<input type="button" name="search" value="Recherche Google" onclick="searchGoogle()"/><br />
+		<input type="text" name="url2assign" value="http://www.gmail.com" />
+		<input type="button" name="assignURLcmd" value="location.assign(url)" onclick="assignURL()"/><br />
+		<input type="text" name="url2replaceWith" value="http://www.linkedin.ca" />
+		<input type="button" name="replaceURLcmd" value="location.replace(url)" onclick="replaceURL()"/><br />
+		<input type="button" name="reloadURLcmd" value="location.reload()" onclick="reloadURL()"/><br />
+	</form>
+</body>
+</html>

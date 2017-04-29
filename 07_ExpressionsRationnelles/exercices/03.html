@@ -1,0 +1,40 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        function valider() {
+            var texte = document.forms["formulaire"]["texte"].value;
+
+            var bbcode = /\[b\](.+?)\[\/b\]/gi,
+            /\[i\](.+?)\[\/i\]/gi,
+                /\[s\](.+?)\[\/s\]/gi;
+
+
+            var replacement = '<strong>' + RegExp.$1 + '</strong>',
+            '<em>' + RegExp.$1 + '</em>',
+                '<del>' + RegExp.$1 + '</del>';
+
+
+            var display = texte.replace(bbcode, replacement);
+
+
+            var showResult = document.getElementById('resultat');
+            showResult.innerHTML = display;
+
+
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <form name="formulaire">
+
+        <textarea name="texte"></textarea><br /><br />
+        <input type="submit" onclick="return valider()">
+    </form>
+    <textarea name="resultat" id="resultat"></textarea>
+</body>
+
+</html>

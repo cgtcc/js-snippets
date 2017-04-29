@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 02 - Exercice 02</title>
+		<script type="text/javascript">
+			function afficherCalories ( ) {
+				var nbCalories=0;
+				
+				if (frmInfo.chocolat[0].checked == true || frmInfo.chocolat[1].checked == true ) {			nbCalories=85;
+				} else {
+						if (frmInfo.chocolat[2].checked == true){
+								nbCalories=100;
+					} else {
+						if (frmInfo.chocolat[3].checked == true){
+								nbCalories=115;
+						} else {
+								window.alert ("Vous devez préciser une sorte de chocolat");
+						}
+					} 
+				}
+				
+				if (nbCalories > 0) { //on ne veut pas poursuivre si l'utilisateur n'a rien coché
+						if (frmInfo.noix[0].checked == true) {
+								nbCalories+=40;
+						}
+						frmInfo.txtNbCalories.value = nbCalories;
+				} 
+				
+			} // fin afficherCalories
+
+			function reinitialiser() {
+				frmInfo.txtNbCalories.value = "";
+				frmInfo.noix[1].checked = true;   //sans noix!
+				
+				for (var k=0; k<4; k++) {  //on pourrait remplacer k<4 par k<chcoolat.length
+					frmInfo.chocolat[k].checked = false;
+				}
+				
+			} // fin reinitialiser
+		</script>
+	</head>
+	<body>
+		<form action="" method="" name="frmInfo">
+			<fieldset>
+				<legend>Choisissez le type de chocolat</legend>
+				 
+				<input type="radio" name="chocolat" id="chocolatN" />
+				<label for="chocolatN">Noir</label>
+				<input type="radio" name="chocolat" id="chocolatB" />
+				<label for="chocolatB">Blanc</label>
+				<input type="radio" name="chocolat" id="chocolatL" />
+				<label for="chocolatL">Lait</label>
+				<input type="radio" name="chocolat" id="chocolatC" />
+				<label for="chocolatC">Caramel</label>
+			</fieldset>
+			<fieldset>
+				<legend>Avec ou sans noix ?</legend>
+				 
+				<input type="radio" name="noix" id="noixAvec" />
+				<label for="noixAvec">Avec noix</label>
+				<input type="radio" name="noix" id="noixSans" />
+				<label for="noisSans">Sans noix</label>
+			</fieldset>	
+			<fieldset>
+				<legend>Calcul des calories</legend>
+				 
+				<input type="button" value="calories" onclick="afficherCalories();" />
+				
+				<label for="txtNbCalories">Information calorifique</label>
+				<input type="text" name="txtNbCalories"   id="txtNbCalories" />
+				
+				<input type="button" value="Réinitialiser" onclick="reinitialiser();" />
+			</fieldset>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 06 - Exercices</title>
+		<script type="text/javascript" src="util.js"></script>
+		<script type="text/javascript">
+			function getRegAnswer(reg, str) {
+				return "<li>" + regTest(reg,str) + "</li>";
+			}
+		</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var sol = "<h3>Solutions:</h3><ol>";
+
+
+
+			//Ex01 : Reconnaitre les chaines commençant par «a» ou «A».
+			sol += getRegAnswer(/^a/i,"Année");
+
+
+
+			//Ex02 : Reconnaitre les chaines finissant par «rs».
+			sol += getRegAnswer(/rs$/,"ours");
+
+
+			
+			//Ex03 : Reconnaitre les chaines contenant au moins un chiffre.
+			sol += getRegAnswer(/[0-9]/,"Il y'en a au moins 1");
+
+
+			
+			//Ex04 : Reconnaitre les chaines commençant par une majuscule.
+			sol += getRegAnswer(/^[A-Z]/,"Elle commence par une majuscule");
+
+
+			
+			//Ex05 : Reconnaitre les chaines commençant par «B», «E» ou «Q».
+			sol += getRegAnswer(/^[BEQ]/,"Elle est belle");
+
+
+
+			//Ex06 : Reconnaitre les chaines ne finissant pas par un signe
+			//       de ponctuation (point, virgule, point-virgule,
+			//       deux-points, point d'interrogation, point d'exclamation)
+			sol += getRegAnswer(/[^.,;:?!]$/,"Je ne finis pas par un signe de ponctuation");
+
+
+
+			//Ex07 : Valider les chaines contenant un «r» précédé de
+			//		 n'importe quelle lettre majuscule ou minuscule.
+			sol += getRegAnswer(/[a-zA-Z]r/,"Arrivé à temps");
+
+
+
+			//Ex08 : Reconnaitre un nombre à 4 chiffres (et 4 chiffres seulement).
+			//		 Attention : 0865 et 0035 sont invalides, du fait qu’ils
+			//		 contiennent des 0 non significatifs.
+			sol += getRegAnswer(/^[1-9][0-9]{3}$/,"5463");
+
+
+
+			//Ex09 : Valider les nombres décimaux positifs non-nuls strictement
+			//		 inférieurs à 1, avec autant de nombres après la virgule.
+			sol += getRegAnswer(/^0\.[0-9]*[1-9]$/,"0.42405960698");
+
+
+			
+			//Ex10 : Valider les chaines débutant par un nombre d’un seul chiffre.
+			//		 Ce chiffre doit être compris entre 5 et 8.
+			//		 Attention la chaine peut ne contenir qu’un seul caractère
+			//	 Exemples de chaines valides : "5","6","7","8","5q","7q2W;3"
+			//	 Exemples de chaines invalides : "4","57","72W;3"
+			sol += getRegAnswer(/^[5-8]([^0-9].*)?$/,"7q2W;3");
+
+
+			
+			//Ex11 : Même que la question précédente mais la chaine ne peut
+			//		 contenir un autre nombre
+			//	Exemples de chaines valides : "5/,"6/,"7/,"8/,"5q/,"7q-W;u"
+			//	Exemples de chaines invalides : "4/,"57/,"72W;3/,"7qgt3"
+			sol += getRegAnswer(/^[5-8][^0-9]*$/,"5e8");
+
+
+
+			//Ex12 : Reconnaitre un mot de passe de 4 à 8 lettres, acceptant
+			//		 uniquement des minuscules, des chiffres et des tirets
+			//		 mais à condition que le mot de passe commence et se
+			//		 termine par une lettre.
+			sol += getRegAnswer(/^[a-z][-a-z0-9]{2,6}[a-z]$/,"w5-q");
+
+
+
+			//Ex13 : Valider un prix en dollar.
+			//		 Il ne doit pas commencer par un 0 à moins que le prix ne soit inférieur à 1$.
+			//		 Il peut avoir deux décimales ou ne pas en avoir
+			//	Exemples valides : 0$ 1500$, 500.00$, 0.00$ 1.54$ 3.99$ 
+			//	Exemples non-valides : 01$ 1.5$ 1.369$
+			sol += getRegAnswer(/^(([1-9][0-9]*)|0)(\.[0-9]{2})?\$$/, "1.00$");
+
+
+
+			//Ex14 : Valider un nombre compris entre 1 et 68. Attention, il ne doit pas débuter par un zéro.
+			sol += getRegAnswer(/^([1-9]|[1-5][0-9]|6[0-8])$/,"38");
+
+
+
+			//Ex15 : Validation d’un numéro de téléphone français :
+			//		 Un numéro de téléphone français comporte 10 chiffres. Par exemple : « 01 53 78 99 99 ».
+			//		 Il faut respecter les règles suivantes : le premier chiffre est TOUJOURS un 0 ;
+			//		 le second chiffre va de 1 à 6 (1 pour la région parisienne… 6 pour les téléphones portables),
+			//		 mais il y a aussi le 8 (ce sont des numéros spéciaux).
+			//		 À noter que le 7 et le 9 commencent à être utilisés mais que nous ne les prendrons pas en compte
+			//		 dans nos exemples ;
+			//		 ensuite viennent les 8 chiffres restants (ils peuvent aller de 0 à 9 sans problème).
+			sol += getRegAnswer(/^0[1-68][0-9]{8}$/,"0153789938");
+
+
+			
+			//Ex16 : Maintenant, on va supposer que la personne peut taper un espace tous les deux chiffres
+			//		 (comme c'est courant de le faire en France), mais aussi un point ou un tiret.
+			//		 Notre regex devra donc accepter les numéros de téléphone suivants :
+			//			0153789999
+		    //			01 53 78 99 99
+		    //			01-53-78-99-99
+		    //			01.53.78.99.99
+		    //			0153 78 99 99
+		    //			0153.78 99-99
+			
+			sol += getRegAnswer(/^0[1-68]([-. ]?[0-9]{2}){4}$/,"0153789999");
+			sol += getRegAnswer(/^0[1-68]([-. ]?[0-9]{2}){4}$/,"01 53 78 99 99");
+			sol += getRegAnswer(/^0[1-68]([-. ]?[0-9]{2}){4}$/,"01-53-78-99-99");
+			sol += getRegAnswer(/^0[1-68]([-. ]?[0-9]{2}){4}$/,"01.53.78.99.99");
+			sol += getRegAnswer(/^0[1-68]([-. ]?[0-9]{2}){4}$/,"0153 78 99 99");
+			sol += getRegAnswer(/^0[1-68]([-. ]?[0-9]{2}){4}$/,"0153.78 99-99");
+
+			sol += "</ol>"
+
+			write(sol);
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script type="text/javascript">
+		//<![CDATA[
+		function showStatus(f) {
+			var s = "";
+			var list = f.elements["selectionlist"];
+			var option;
+			for (var i=0; i<list.options.length; i++) {
+				
+				option = list.options[i];
+				s += "Élément #" + i + " (" + option.text + "/" + option.value + ") " +
+				 	 (option.selected ? "sélectionné." : "non sélectionné.") + "\n";
+			}
+			window.alert(s);
+		}
+		//]]>
+		</script>
+	</head>
+	<body>
+		<form action="" method="get">
+			<fieldset>
+				<select name="selectionlist" size="15" multiple="multiple">
+				<optgroup label="Sélectionner une couleur">
+	                <option value="R">Rouge</option>
+					<option value="G">Vert</option>
+					<option value="B">Bleu</option>    </optgroup>
+                 <optgroup label="---------">
+       
+					<option value="R">Cyan</option>
+					<option value="G">Magenta</option>
+					<option value="B">Jaune</option>
+					<option value="B">Noir</option>
+                 </optgroup>
+
+
+
+				
+
+
+
+
+
+				</select>
+				<input type="button" value="Show status" onclick="showStatus(this.form);" />
+			</fieldset>
+		</form>
+	</body>
+</html>

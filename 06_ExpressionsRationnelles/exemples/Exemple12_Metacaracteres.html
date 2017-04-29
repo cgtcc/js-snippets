@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Les méta-caractères</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Nous avons vu précédemment que la syntaxe des regex est définie
+			// par un certain nombre de caractères spéciaux, comme ^, $, [ et ],
+			// ou encore + et *.
+			// Ces caractères sont ce que l'on appelle des métacaractères,
+			// et en voici la liste complète : ! ^ $ ( ) [ ] { } ? + * . / \ |
+			// Pour pouvoir les utiliser dans une regex, il faudra les échapper
+			// utilisant un \
+			// De cette manière, ils seront vues par l'interpréteur comme étant
+			// des caractères « dans le texte », et non des métacaractères.
+			
+			write(/\//.test("/"));    // Affiche true
+			write(/\{\}/.test("{}")); // Affiche true
+			write(/\^\+/.test("^+")); // Affiche true
+
+		</script>
+	</body>
+</html>

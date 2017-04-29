@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Exercice 03</title>
+	<script type="text/javascript">
+		function empty(f) {
+			for (var i=0; i<f.elements["colors"].length; i++) {
+				f.elements["colors"][i].checked = false;
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="" method="">
+		<fieldset>
+			<legend>Désélection d’un groupe de boutons radio</legend>
+
+			<input type="radio" name="colors" id="colorsR" value="R" />
+			<label for="colorsR">Rouge</label><br />
+
+			<input type="radio" name="colors" id="colorsV" value="V" />
+			<label for="colorsV">Vert</label><br />
+
+			<input type="radio" name="colors" id="colorsB" value="B" />
+			<label for="colorsB">Bleu</label><br />
+
+			<input type="button" onclick="empty(this.form);" value="Reset boutons radios" />
+		</fieldset>
+	</form>
+</body>
+</html>

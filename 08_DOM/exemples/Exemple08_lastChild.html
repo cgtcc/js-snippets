@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>lastChild</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : dernier_elem = element.lastChild
+			//			 lastChild renvoie le dernier élément enfant de l'élément courant. 
+			//
+			//			 dernier_elem est le dernier nœud élément dans la liste de nœuds
+			//			(nodeList) enfants de l'élément courant. 
+
+			window.onload = function() {
+				var tr = document.getElementById("ligne1");
+				var tdCoinDroit = tr.lastChild;
+
+				with(tdCoinDroit) {
+  					window.alert("Type : " + nodeName + " / Valeur : " + firstChild.nodeValue);
+  				}
+			}
+		</script>
+		<table>
+			<tr id="ligne1"><td>1</td><td>2</td><td>3</td><td>4</td></tr>
+		</table>
+	</body>
+</html>

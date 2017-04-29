@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Récupérer toutes les occurences</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// La méthode match() de l'objet String fonctionne comme search(),
+			// à la différence qu'elle retourne un tableau de toutes les occurrences
+			// trouvées. C'est pratique pour compter le nombre de fois qu'une portion
+			// de texte est présente.
+
+			var sentence = "Ma combinaison : 18, 34 ensuite vient 2 et 66 mais il n y'a pas de 12";
+ 			var result = sentence.match(/[0-9]+/g);
+			var nb = result.length;
+			write("Il y a " + nb + " nombre" +((nb > 1) ? "s" : "") + " : ");
+			write(result);
+
+		</script>
+	</body>
+</html>

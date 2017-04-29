@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>cloneNode</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : var dupNode = element.cloneNode(enProfondeur);
+			//			 Renvoie une copie du nœud courant. 
+			//			 enProfondeur : est une valeur booléenne obligatoire,
+			//							elle indique si la copie doit se faire
+			//							en profondeur ou non.
+			//
+			// Cloner un nœud copie tous ses attributs ainsi que leurs valeurs.
+			// Le nœud dupliqué renvoyé par cloneNode ne fera pas partie du document
+			// tant qu'il n'y est pas ajouté via la méthode appendChild ou
+			// une méthode similaire. De même, il n'aura pas d'élément parent tant
+			// qu'il n'a pas été ainsi ajouté à un autre nœud.
+			//
+			// Si profond est défini à false, aucun des nœuds enfants n'est copié.
+			// Le texte contenu dans le nœud n'est pas copié non plus,
+			// car il fait partie d'un ou plusieurs nœuds Text enfants.
+			//
+			// Si profond est évalué à true, le sous-arbre entier est copié également
+			// (y compris le texte qui peut être contenu dans des nœuds Text enfants).
+			// Pour les nœuds vides (par exemple les éléments img et input),
+			// le fait de mettre profond à true ou false n'a aucune incidence sur la
+			// copie, mais il est tout de même nécessaire de fournir une valeur.
+
+			window.onload = function () {
+				var para1 = document.getElementById("p1");
+				document.body.appendChild(document.createElement("hr"));
+				var paraClone1 = para1.cloneNode(false);
+				paraClone1.appendChild(
+					document.createTextNode("Nouveau contenu dans le paragraphe cloné"));
+				document.body.appendChild(paraClone1);
+				document.body.appendChild(document.createElement("hr"));
+				var paraClone2 = para1.cloneNode(true);
+				document.body.appendChild(paraClone2);
+  			}
+		</script>
+		<div>
+			<p id="p1">Contenu du paragraphe 1</p>	
+		</div>
+	</body>
+</html>

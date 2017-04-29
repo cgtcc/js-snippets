@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>L'objet Event</title>
+	<style type="text/css">
+		div, span { padding : 20px; }
+		#monDiv   { background-color: #B0B0B0; }
+		.monSpan  { background-color: #C0C0C0; margin-right : 20px;}
+	</style>
+	<script type="text/javascript" src="events.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", function(){
+
+			document.getElementById("monDiv").addEventListener("click", afficherMsg, false);
+
+			document.getElementById("clear").addEventListener("click", function(){
+				document.getElementById("txt").value = "";
+			}, false);
+
+		},false);
+
+		function afficherMsg(evt) {
+			var zoneText = document.getElementById("txt");
+			
+			zoneText.value += "Clic sur " + evt.target.firstChild.nodeValue + "\n";
+		}
+
+	</script>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>Évènements capturés sur <strong>un noeud parent</strong> en utilisant la propriété <strong>target</strong></legend>
+			<div id="monDiv"> Blah
+				<span class="monSpan">span 1</span>
+				<span class="monSpan">span 2</span>
+				<span class="monSpan">span 3</span>
+				<span class="monSpan">span 4</span>
+				<span class="monSpan">span 5</span>
+			</div>
+			<textarea id="txt" cols="64" rows="5"></textarea><br />
+			<input type="button" id="clear" value="Effacer" />
+		</fieldset>
+	</form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 07 - Exercice 04</title>
+		<script type="text/javascript">
+		window.onload = function(){
+			document.myForm.txtIn.value = "12,45";
+		};
+		
+		function remplacer(match, p1, p2){
+		    var destInt = document.myForm.txtIntOut;
+		    var destDec = document.myForm.txtDecOut;
+
+			destInt.value = p1;
+			destDec.value = p2;
+		}
+
+		function extract() {
+		    var src  = document.myForm.txtIn;
+		    src.value.replace(/([0-9]+)[.,]([0-9]+)/, remplacer);
+		}
+		</script>
+
+	</head>
+	<body>
+		<form name="myForm" action="" method="">
+			<fieldset>
+		    <label for="txtIn">Nombre réel : </label><input type="text" name="txtIn" id="txtIn" size="15" />
+		    <input type="button" value="Tronquer les décimales" onclick="extract();" /><br /><br />
+		    <label for="txtIntOut">Partie entière : </label><input type="text" name="txtIntOut" size="15" />
+		    <label for="txtDecOut">Partie décimale : </label><input type="text" name="txtDecOut" size="15" />
+
+			</fieldset>
+		</form>
+	</body>
+</html>

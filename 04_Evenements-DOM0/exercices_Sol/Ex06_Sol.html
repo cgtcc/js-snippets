@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Exercice 06</title>
+		<script type="text/javascript">
+			function copie(form){
+				form.sortie.value = form.saisie.value;
+			}
+		</script>
+	</head>
+	<body>
+		<form action="" methode="get">
+			<fieldset>
+				<legend>Clonage</legend>
+
+				<label for="saisie">Original :</label>
+				<input type="text" size="30" name="saisie" id="saisie" onKeyup="copie(this.form);"><br />
+				<label for="sortie">Copie :</label>
+				<input type="text" readonly size="30" name="sortie" id="sortie"><br />
+				<input type="reset" />
+			</fieldset>
+		</form>
+	</body>
+</html>

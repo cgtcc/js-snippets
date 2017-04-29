@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 07 - Exercice 03</title>
+		<script type="text/javascript">
+		function preview() {
+		    var src  = document.myForm.txtIn;
+		    var dest = document.myForm.txtOut;
+
+		    var value = src.value;
+		     
+		    value = value.replace(/\[b\](.*)\[\/b\]/g, '<strong>$1</strong>'); // Gras
+		    value = value.replace(/\[i\](.*)\[\/i\]/g, '<em>$1</em>'); // Italique
+		    value = value.replace(/\[s\](.*)\[\/s\]/g, '<del>$1</del>'); // Barré
+		    value = value.replace(/\[u\](.*)\[\/u\]/g, '<span style="text-decoration: underline">$1</span>'); // Souligné
+		     
+		    dest.value = value;
+		}
+		</script>
+
+	</head>
+	<body>
+		<script type="text/javascript">
+			window.onload = function(){
+				document.myForm.txtIn.value = "[b]Je suis en gras [i] et moi en italique aussi[/i][/b]\n" +
+											"[s]Moi je suis barré[/s]\n" +
+											"[u]Et moi en souligné[/u]\n";
+			};
+		</script>
+		<form name="myForm" action="" method="">
+		    <textarea name="txtIn" id="txtIn"></textarea><br />
+		    <input type="button" value="BBCode -> HTML" onclick="preview();" /><br />
+		    <textarea name="txtOut" id="txtOut"></textarea>
+		</form>
+	</body>
+</html>

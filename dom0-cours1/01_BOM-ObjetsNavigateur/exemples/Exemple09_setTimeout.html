@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>window.setTimeout()</title>
+	<script type="text/javascript">
+		/*
+		La méthode setTimeout() de l’objet window, permet d’exécuter une fonction après un délai donné.
+
+		Syntaxe :
+
+			timeoutID = window.setTimeout(fnct, delai[, param1, param2, ...]);
+
+		où
+
+			timeoutID : est l'identificateur du timeout, qui peut être utilisé avec window.clearTimeout.
+			fnct      : est la fonction que vous désirez exécuter après delai millisecondes.
+			delai     : est le nombre de millisecondes (millièmes de seconde) après lequel la fonction doit être appelée.
+
+		Notez que le passage de paramètres supplémentaires à la fonction dans la première syntaxe ne fonctionne pas dans Internet Explorer. Pour combler cette lacune, nous pouvons donc avoir recours à l’utilisation de fonctions anonymes.
+		*/
+
+		var timeoutID;
+
+		function delayedAlert() {
+  			timeoutID = window.setTimeout(slowAlert, document.myForm.delay.value*1000);
+		}
+
+		function slowAlert() {
+			alert("Voilà après l'attente !");
+		}
+
+		function clearAlert() {
+			window.clearTimeout(timeoutID);
+		}
+
+	</script>
+</head>
+<body>
+	<form name="myForm">
+		Délais en secondes : <input type="text" name="delay" value="2"/><br />
+		<input type="button" name="delayAlert" value="delayedAlert()" onclick="delayedAlert()" />
+		<input type="button" name="clearDelay" value="clearAlert()"   onclick="clearAlert()"   />
+	</form>
+</body>
+</html>

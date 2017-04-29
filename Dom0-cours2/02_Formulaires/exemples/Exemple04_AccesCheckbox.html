@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Accès à un élément text</title>
+		<script type="text/javascript">
+			function showStatus(f) {
+				window.alert("La case " +
+							 (f.elements["chkbox"].checked ? "est cochée."
+							 							   : "n'est pas cochée."));
+			}
+		</script>
+	</head>
+	<body>
+		<form action="" method="get">
+			<fieldset>
+				<input type = "checkbox" name  = "chkbox" />
+				<input type = "button"   value = "Show status"
+					   onclick = "showStatus(this.form);" />
+			</fieldset>
+		</form>
+	</body>
+</html>

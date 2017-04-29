@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Exercice 06</title>
+	<script type="text/javascript">
+		function loadURL(list) {
+			var url = list.options[list.selectedIndex].value;
+			if (url != "") {
+				window.location.href = url;
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="" method="">
+		<fieldset>
+			<legend>Lien rapide</legend>
+
+			<select name="urls" onchange="loadURL(this);">
+				<option value="">Sélectionner un page</option>
+				<option value="http://www.google.com">Google</option>
+				<option value="http://fr.wikipedia.org">Wikipedia</option>
+				<option value="http://www.meteomedia.com/weather/caqc0363">Météomédia</option>
+			</select>
+
+			<script type="text/javascript">
+				var liens = {
+					"Sélectionner un page" : "",
+					"Google"               : "http://www.google.com",
+					"Wikipedia"            : "http://fr.wikipedia.org",
+					"Météomedia"           : "http://www.meteomedia.com/weather/caqc0363",
+					"Maisonneuve"          : "http://www.cmaisonneuve.qc.ca"
+				};
+
+				var htmlString = "<select name=\"url2\" onchange=\"loadURL(this);\">";
+				for(var site in liens) {
+					htmlString += "<option value=\""+liens[site]+"\">"+site+"</option>";
+				}
+				
+				htmlString += "</select>";
+				document.write(htmlString);
+			</script>
+
+		</fieldset>
+	</form>
+</body>
+</html>

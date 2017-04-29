@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Série 08 - Exercice 04 (Base)</title>
+	<script>
+		function myFunction() {
+			var mydiv = document.createElement("div");
+
+			var form = document.createElement("form");
+			form.method = "post";
+			form.setAttribute('action', 'submit');
+
+			var input = document.createElement('input');
+			input.setAttribute('type', 'file');
+			input.setAttribute('name', 'inputUpload');
+			input.setAttribute('id', 'inputUpload');
+
+			var submit = document.createElement("input");
+			submit.setAttribute('type', "submit");
+			submit.setAttribute('value', "Submit");
+
+			mydiv.appendChild(form);
+			form.appendChild(input);
+			form.appendChild(submit);
+
+			document.getElementsByTagName('body')[0].appendChild(mydiv);
+
+		}
+	</script>
+</head>
+
+<body onload="myFunction()">
+
+	<!--div id="divEx4">
+		<form enctype="multipart/form-data" method="post" action="upload.php">
+			<fieldset>
+				<legend>Uploader une image</legend>
+
+				<div style="text-align: center">
+					<label for="inputUpload">Image à uploader :</label>
+					<input type="file" name="inputUpload" id="inputUpload" />
+					<br /><br />
+					<input type="submit" value="Envoyer" />
+				</div>
+			</fieldset>
+		</form>
+	</div-->
+</body>
+
+</html>

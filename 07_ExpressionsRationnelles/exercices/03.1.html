@@ -1,0 +1,31 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        function valider() {
+            var texte = document.forms["formulaire"]["texte"].value;
+            /\[b\](.+?)\[\/b\]/gi.exec(texte);
+            var bold = document.getElementById('resultat');
+            bold.innerHTML = '<strong>' + RegExp.$1 + '</strong>';
+
+            /\[s\](.+?)\[\/s\]/gi.exec(texte);
+            var del = document.getElementById('resultat');
+            del.innerHTML = '<del>' + RegExp.$1 + '</del>';
+
+
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <form name="formulaire">
+
+        <textarea name="texte"></textarea><br /><br />
+        <input type="submit" onclick="return valider()">
+    </form>
+    <textarea name="resultat" id="resultat"></textarea>
+</body>
+
+</html>

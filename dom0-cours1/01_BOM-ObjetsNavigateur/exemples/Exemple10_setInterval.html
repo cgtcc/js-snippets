@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>window.setInterval()</title>
+	<script type="text/javascript">
+		/*
+		La méthode setInterval Appelle une fonction de manière répétée, avec un certain délai fixé entre chaque appel.
+
+		Syntaxe
+
+			intervalID = window.setInterval(fonction, delai[, param1, param2, ...])
+
+		où
+
+    		intervalID : est un ID unique d'intervalle qui peut être passé à clearInterval().
+    		fonction   : est la fonction qui doit être appelée de manière répétée.
+		    delai      : est le nombre de millisecondes (millièmes de seconde) que setInterval() doit attendre avant chaque appel 			   de fonction. 
+
+		Notez que le passage de paramètres supplémentaires à la fonction ne fonctionne pas dans Internet Explorer. 
+		*/
+
+		var timeoutID;
+
+		function delayedAlert() {
+  			timeoutID = window.setInterval(slowAlert, document.myForm.delay.value*1000);
+		}
+
+		function slowAlert() {
+			alert("Voilà après l'attente !");
+		}
+
+		function clearAlert() {
+			window.clearInterval(timeoutID);
+		}
+
+	</script>
+</head>
+<body>
+	<form name="myForm">
+		Délais en secondes : <input type="text" name="delay" value="5"/><br />
+		<input type="button" name="delayAlert" value="delayedAlert()" onclick="delayedAlert()" />
+		<input type="button" name="clearDelay" value="clearAlert()"   onclick="clearAlert()"   />
+	</form>
+</body>
+</html>

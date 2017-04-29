@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>L'objet location : Informations concernant l'url</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		window.location : Renvoie un objet Location contenant des informations concernant l'URL du document et fournit des méthodes pour modifier cette URL. Cette propriété peut également être utilisée pour charger une autre URL lorsqu'elle est modifiée.
+
+		Syntaxe
+
+		var objetLocation = window.location;
+		window.location = adresseURL;
+
+		où
+
+	    objetLocation :  est un objet de type Location, fournissant des informations à propos de l'URL courante et des méthodes pour la modifier. Ses propriétés et méthodes sont décrites ci-dessous.
+	    adresseURL : est un objet Location ou une chaîne indiquant l'URL à charger.
+
+		*/
+
+		for(var prop in window.location) {
+			if(typeof(window.location[prop]) != "function")
+				document.write("<strong>location." + prop + "</strong> = " + window.location[prop] + "<br />");
+		}
+
+
+	</script>
+</body>
+</html>

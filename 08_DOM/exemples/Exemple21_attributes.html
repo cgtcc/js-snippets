@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>attributes</title>
+		<script type="text/javascript">
+			// Syntaxe : var collAttributes = elementNodeReference.attributes;
+			//			 attributes renvoie une collection des attributs
+			//			 spécifiés sur l'élément donné. 
+			// La collection de nœuds attributs renvoyée par cet objet est de type
+			// NamedNodeMap. Si l'élément n'a pas d'attributs spécifiés, l'objet
+			// renvoyée a une taille de 0 (zéro). Cet attribut est en lecture seule.
+			function attributs() {
+				var a = document.getElementById("monLien");
+				var texteSortie = document.getElementById("result");
+				if(a.hasAttributes()) {
+					// on vérifie d'abord que l'élément a des attributs
+					for (var i = 0; i < a.attributes.length; i++) {
+						texteSortie.value += a.attributes[i].name + " -> " +
+											 a.attributes[i].value + "\n";
+					}
+				} else {
+					texteSortie.value = "Aucun attribut à afficher.";
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<a id="monLien" href="http://www.google.ca" style="color: green;">Google</a>
+		<form action="">
+			<fieldset>
+				<input type="button" value="Affiche les noms et valeurs des attributs"
+					   onclick="attributs();" /><br />
+				<textarea id="result"></textarea>
+			</fieldset>
+		</form>
+ 	</body>
+</html>

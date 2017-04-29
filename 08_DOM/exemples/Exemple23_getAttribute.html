@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>getAttribute()</title>
+		<script type="text/javascript">
+			// Syntaxe : attribut = element.getAttribute(nom_attribut);
+			// getAttribute renvoie la valeur d'un attribut donné de l'élément
+			// spécifié. Si l'attribut n'existe pas, la valeur renvoyée sera soit
+			// null soit "" (une chaîne vide).
+			window.onload = function () {
+				var a = document.getElementById("monLien");
+				alert("id : " + a.getAttribute("id") + "\n" +
+					  "href : " + a.getAttribute("href") + "\n" +
+					  "style : " + a.getAttribute("style"));
+			};
+		</script>
+	</head>
+	<body>
+		<a id="monLien" href="http://www.google.ca" style="color: green;">Google</a>
+ 	</body>
+</html>

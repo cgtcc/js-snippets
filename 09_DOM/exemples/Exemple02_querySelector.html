@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>querySelector() / querySelectorAll()</title>
+	<script type="text/javascript">
+		// Syntaxes : var element = document.querySelector(selectors);
+		//            var elementList = document.querySelectorAll(selectors);
+
+		window.onload = function(){
+			var query = document.querySelector("#menu .item span"),
+				queryAll = document.querySelectorAll("#menu .item span");
+			 
+			var msg = "query.innerHTML -> " + query.innerHTML; // "Élément 1"
+
+			msg += "\nqueryAll.length -> " + queryAll.length; // "2"
+			msg += "\n" + queryAll[0].innerHTML + " - " + queryAll[1].innerHTML; // "Élément 1 - Élément 2"
+			window.alert(msg);
+		};
+	</script>
+</head>
+<body>
+	<div id="menu">
+		<div class="item">
+			<span>Élément 1</span>
+			<span>Élément 2</span>
+		</div>
+		<div class="publicite">
+			<span>Élément 3</span>
+			<span>Élément 4</span>
+		</div>
+	</div>
+	<div id="contenu">
+		<span>Introduction au contenu de la page...</span>
+	</div>
+</body>
+</html>

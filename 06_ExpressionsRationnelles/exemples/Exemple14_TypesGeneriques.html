@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Les types génériques \x</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Les types génériques s'écrivent tous de la manière suivante :
+			// \x, où x représente une lettre.
+			// Voici la liste de tous les types génériques :
+			//		\d	Trouve un caractère décimal (un chiffre)
+			//		\D	Trouve un caractère qui n'est pas décimal
+			//			(donc pas un chiffre)
+			//		\s	Trouve un caractère blanc
+			//		\S	Trouve un caractère qui n'est pas un caractère blanc
+			//		\w	Trouve un caractère « de mot » : une lettre, accentuée
+			//			ou non, ainsi que l'underscore
+			//		\W	Trouve un caractère qui n'est pas un caractère « de mot »
+
+			
+			write(/^\d{4}$/.test("55a5"));   // Affiche false
+			write(/^\d{4}$/.test("5678"));   // Affiche true
+			write(/^\D{5}$/.test("Allo!"));  // Affiche true
+			write(/^\w+$/.test("J'aime utiliser les regex ")); // Affiche false
+
+		</script>
+	</body>
+</html>

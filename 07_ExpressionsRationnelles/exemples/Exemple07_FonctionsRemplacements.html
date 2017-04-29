@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Utilisation de fonctions remplacements</title>
+		<script type="text/javascript" src="io.js"></script>
+		<script type="text/javascript" src="numbers.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// À la place d'une chaîne de caractères dans le deuxième paramètre de replace,
+			// il est possible d'utiliser une fonction pour gérer le ou les remplacements.
+			// Cela permet, par exemple, de réaliser des opérations sur les portions
+			// capturées ($1, $2, $3…, $9).
+			// Les paramètres formels de la fonction sont soumis à une seule règle,ils doivent
+			// respecter un certain ordre (mais leurs noms peuvent bien évidemment varier)
+			//		function(match, p1, p2, p3 /* ... */, offset, str).
+			//			Les paramètres p1, p2, p3… représentent les fameux $1, $2, $3...
+			//			S'il n'y a que trois parenthèses capturantes, il n'y aura que trois « p ».
+			//			S'il y en a cinq, il y aura cinq « p ». Voici les explications des paramètres :
+		    //
+		    //			Le paramètre match : contient la portion de texte respectant le motif de la regex ;
+		    //			Les paramètres p*  : contiennent les portions capturées par les parenthèses
+		    //								 p1 correpond à $1, p2 correpond à $2, ... ;
+		    //			Le paramètre offset: contient la position de match au sein de la chaine examinée ;
+			//			Le paramètre str   : contient la totalité de la chaîne.
+
+ 			var sentence = 'Le prix est de 24$, il me reste encore 1$ à ammasser.';
+
+			var result = sentence.replace(/(\d+)(\$)/g, replacer)
+
+			function replacer(match, p1, p2, offset, str){
+				write("match  = '" + match + "'");
+				write("p1     = '" + p1    + "'");
+				write("p2     = '" + p2    + "'");
+				write("offset = '" + offset+ "'");
+				write("str    = '" + str   + "'<br />");
+
+			    p1 = parseInt(p1);
+			 
+			    if (!isNaN(p1)) {
+			        //fonction num2Letters appartient à la bibliothèque numbers.js ci-incluse
+			        return num2Letters(p1) + " dollar" + ((p1 !== 1) ? "s" : "");
+			    }
+			}
+
+			write("<strong>Avant : </strong>" + sentence);
+			write("<strong>Après : </strong>" + result);
+
+		</script>
+	</body>
+</html>

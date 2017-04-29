@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Exercice 02</title>
+		<script type="text/javascript">
+			function resetCheck() {
+				return window.confirm("Voulez vous effacer toutes les données saisies?");
+			}
+		</script>
+	</head>
+	<body>
+		<form action="" methode="get" onreset="return resetCheck()">
+			<fieldset>
+				<legend>Cliquez sur le bouton !</legend>
+
+				<label for="nom">Nom :</label>
+				<input type="text" size="30" name="nom" id="nom"><br />
+				<label for="idee">Votre idée :</label>
+				<input type="text" size="30" name="idee" id="idee"><br />
+				<input type="reset" />
+			</fieldset>
+		</form>
+	</body>
+</html>

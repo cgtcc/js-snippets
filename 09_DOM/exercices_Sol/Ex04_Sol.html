@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 09 - Exercice 04</title>
+		<script type="text/javascript">
+			var nb = 1;
+			function changeItem() {
+				var elem = document.getElementById("list").firstChild.firstChild;
+				elem.nodeValue = ++nb;
+			}
+		</script>
+	</head>
+	<body>
+		<form action="" method="get">
+			<fieldset>
+				<legend>Ajouter 1</legend>
+				<ul id="list"><li>1</li></ul>
+				<input type="button" onclick="changeItem();" value="+1" />
+			</fieldset>
+		</form>
+	</body>
+</html>

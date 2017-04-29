@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Exercice 05</title>
+		<script type="text/javascript">
+			var nbCarMax = 40;
+
+			window.onload = function(){
+				document.nbLettres.saisie.maxLength = nbCarMax;
+				document.nbLettres.controle.value = nbCarMax;
+				document.nbLettres.controle.readOnly = true;
+				document.nbLettres.saisie.focus();
+			};
+
+			function remiseAZero(){
+				document.nbLettres.saisie.value = "";
+				document.nbLettres.controle.value = nbCarMax;
+				document.nbLettres.saisie.focus();
+				return false;
+			}
+
+			function actualiser() {
+				document.nbLettres.controle.value = nbCarMax-document.nbLettres.saisie.value.length;
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<form name="nbLettres" action="" methode="get" onreset="return remiseAZero();">
+			<fieldset>
+				<legend>Donnez un court descriptif</legend>
+
+				<label for="saisie">Descriptif : </label>
+				<input type="text" name="saisie" id="saisie" size="40" onkeyup="actualiser();"/>
+				<input type="text" size="3" name="controle" /> caractères disponibles<br>
+				<input type="reset" />
+			</fieldset>
+		</form>
+	</body>
+</html>

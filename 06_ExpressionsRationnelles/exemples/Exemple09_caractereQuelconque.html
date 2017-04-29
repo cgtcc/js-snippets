@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Trouver un caractère quelconque .</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Le point permet de trouver n'importe quel caractère,
+			// à l'exception des sauts de ligne (les retours à la ligne).
+			// Ainsi, la regex suivante trouvera les mots « gras »,
+			// « grès », « gris », « gros », et d'autres mots inexistants
+			// comme « grys », « grus », « grps »…
+			// Le point symbolise donc un caractère quelconque :
+			
+			write(/gr.s/.test("grys")); // Affiche true
+			write(/gr.s/.test("grus")); // Affiche true
+			write(/gr.s/.test("grps")); // Affiche true
+			write(/gr.s/.test("gros")); // Affiche true
+		</script>
+	</body>
+</html>

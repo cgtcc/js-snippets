@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Couper avec une regex</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Nous avions vu que la méthode split() recevait une chaîne de
+			// caractères en paramètre. Mais il est également possible de transmettre
+			// une regex. C'est très pratique pour découper une chaîne à l'aide,
+			// par exemple, de plusieurs caractères distincts.
+
+			var months = "Jan,Fév,Mar;Avr:Mai:Jun,Jui,Aou;Sep,Oct:Nov;Déc";
+			var result = months.split(/[,:;]/);
+			 
+			write(result);
+
+		</script>
+	</body>
+</html>

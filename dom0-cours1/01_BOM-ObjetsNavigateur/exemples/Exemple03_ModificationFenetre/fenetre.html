@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Une nouvelle fenêtre</title>
+</head>
+<body>
+	<h1>Ma fenêtre</h1>
+	<form name="myForm">
+		<fieldset>
+			<legend>Modifier la barre de statut</legend>
+			<input type="button" name="ajoutStatut" value="Ajouter un statut" onclick="addStatus()"/><br />
+		</fieldset>
+		<fieldset>
+			<legend>Déplacer</legend>
+			<input type="button" name="gauche" value="←" onclick="goLeft()" />
+			<input type="button" name="droite" value="→" onclick="goRight()"/>
+			<input type="button" name="haut"   value="↑" onclick="goUp()"   />
+			<input type="button" name="bas"    value="↓" onclick="goDown()" /><br />
+			x: <input type="text" name="winX" value="0" size="4" />
+			y : <input type="text" name="winY" value="0" size="4"/>
+			<input type="button" name="deplacer" value="Déplacer"   onclick="moveWin()" /><br />
+		</fieldset>
+		<fieldset>
+			<legend>Redimensionner</legend>
+				<input type="button" name="rapptisser" value="Rapptisser"   onclick="goSmaller()" />
+				<input type="button" name="agrandir"   value="Agrandir" onclick="goBigger()"/><br />
+				largeur: <input type="text" name="winWidth" value="300" size="4"  />
+				hauteur : <input type="text" name="winHeight" value="300" size="4"/>
+				<input type="button" name="redimensionner"   value="Redimensionner" onclick="resizeWin()"/><br />
+		</fieldset>
+		<fieldset>
+			<legend>Modifier le plan</legend>
+			<input type="button" name="arriere" value="En arrière" onclick="goBack()" />
+			<input type="button" name="avant" value="En avant" onclick="goFront()"/>
+		</fieldset>
+		<fieldset>
+			<legend>Fermer la fenêtre</legend>
+			<input type="button" name="fermer" value="Fermer" onclick="closeWindow()"/><br />
+		</fieldset>
+		<fieldset>
+			<legend>Charger un autre document</legend>
+			<input type="text" name="locURL" value="../images/js.png" size="20"  />
+			<input type="button" name="loc" value="Changer la page" onclick="changeLocation()"/><br />
+		</fieldset>
+	</form>
+
+	<script type="text/javascript">
+		
+		var form = document.myForm;
+
+		function addStatus(){
+			//permet d'afficher un texte dans la barre de statut
+			//(la barre en bas du navigateur).
+			window.status = "Un texte de statut";
+		}
+
+		//window.moveBy(x,y) : Permet de déplacer la fenêtre de x par rapport à son abscisse
+		//                     actuelle et de y  par rapport à son ordonnée actuelle.
+		function goLeft() {window.moveBy(-20,0);}
+		function goRight(){window.moveBy(20,0); }
+		function goUp()   {window.moveBy(0,-20);}
+		function goDown() {window.moveBy(0,20); }
+
+		//windowmoveTo(x,y) : Permet de déplacer la fenêtre à la position (x,y).
+		function moveWin()   {window.moveTo(form.winX.value, form.winY.value);}
+
+		//window.resizeBy(dx,dy) : Permet de redimensioner la fenêtre en tutilisant 
+		//                         les valeur dx et dy.
+		function goSmaller() {window.resizeBy(-20,-20);}
+		function goBigger()  {window.resizeBy(20,20);  }
+	
+		//window.resizeTo(width,height) : Permet d'attribuer à la fenêtre les dimensions
+		//                                width et height.
+		function resizeWin() {window.resizeTo(form.winWidth.value, form.winHeight.value);}
+
+		//window.blur() : Permet de positionner la fenêtre en arrière plan.
+		function goBack() {window.blur();}
+		
+		//window.focus() : Permet de positionner la fenêtre en premier plan.
+		function goFront(){window.focus();}
+
+		//window.close() : Permet de fermer la fenêtre.
+		function closeWindow(){window.close();}
+
+		//window.location() : Permer récupérer l'url complète de la page en cours ou
+		//                    de modifier cette dernière.
+		function changeLocation(){window.location = form.locURL.value;}
+	</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Rechercher / Remplacer</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Une fonctionnalité intéressante des regex est de pouvoir effectuer
+			// des « rechercher-remplacer ». Rechercher-remplacer signifie qu'on
+			// recherche des portions de texte dans une chaîne de caractères et qu'on
+			// remplace ces portions par d'autres. C'est relativement pratique pour
+			// modifier une chaîne rapidement, ou pour convertir des données.
+			// Un rechercher-remplacer se fait au moyen de la méthode replace()
+			// de l'objet String.
+			// Elle reçoit deux arguments : la regex et une chaîne de caractères
+			// qui sera le texte de remplacement.
+
+			var sentence = "J'aime coder en Javascript";
+ 			var result = sentence.replace(/coder/, "programmer");
+ 			write(result); // Affiche : « J'aime programmer en Javascript »
+
+ 			// Une RegExp permet l'utilisation d'une autre option, g, qui signifie
+ 			// « rechercher plusieurs fois ». Par défaut, la regex ne sera exécutée
+ 			// qu'une fois : la première occurence de « regex » sera la seule trouvée et remplacée.
+
+			sentence = "J'aime les regex, l'utilisation des regex me facilite la tâche.";
+			result = sentence.replace(/regex/, "expressions régulières");
+			// « J'aime les expressions régulières, l'utilisation des regex me facilite la tâche. »
+			write(result);
+
+ 			// Pour éviter cela, on utilisera l'option g qui va dire de continuer
+ 			// la recherche jusqu'à la fin
+
+			result = sentence.replace(/regex/g, "expressions régulières");
+			// « J'aime les expressions régulières, l'utilisation des expressions régulières me
+			//   facilite la tâche. »
+			write(result);
+
+		</script>
+	</body>
+</html>

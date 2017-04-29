@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>innerHTML</title>
+		<script type="text/javascript" src="io.js"></script>
+		<script type="text/javascript">
+			// Syntaxe : var balisage = element.innerHTML;
+			//			 element.innerHTML = balisage;
+			//			 innerHTML (disponible en lecture/écriture) récupère ou
+			//			 définit tout le balisage et le contenu au sein d'un élément donné.
+			//			 balisage : est une chaîne contenant le contenu de l'élément
+			//						(y compris ses sous-éléments) au format HTML brut.
+			//						Par exemple, "<p>Du texte</p>".
+    		
+			window.onload = function () {
+				var element = document.getElementById("monDiv");
+				window.alert("Le contenu original du div est : " + element.innerHTML);
+				element.innerHTML = "<p>Nouveau contenu pour le div</p>";
+  			}
+		</script>
+	</head>
+	<body>
+		<div id="monDiv">
+			<p>Contenu original du div</p>
+		</div>
+	</body>
+</html>

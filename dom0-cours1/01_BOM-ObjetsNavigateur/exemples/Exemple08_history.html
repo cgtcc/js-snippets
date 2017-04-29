@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>L'objet history : Naviguer dans l'historique</title>
+	<script type="text/javascript">
+		function goBack()   { window.history.back(); }
+		function goForward(){ window.history.forward(); }
+		function go()       { window.history.go(window.document.myForm.nb.value); }
+	</script>
+</head>
+<body>
+	<form name="myForm">
+		<input type="button" name="back"    value="←"  onclick="goBack()"    />
+		<input type="button" name="forward" value="→"  onclick="goForward()" />
+		<input type="text"   name="nb"      value="-2" size="2"              />
+		<input type="button" name="goNb"      value="#"  onclick="go()"      />
+	</form>
+</body>
+</html>

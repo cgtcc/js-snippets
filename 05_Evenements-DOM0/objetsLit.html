@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript">
+		var mickey = {
+			"prenom" : "Mickey",
+			"nom"    : "Mouse",
+			"loc"    : "ÉA",
+			"copine" : {
+				"prenom" : "Minnie",
+				"nom"    : "Mouse",
+				"loc"    : "Paris"
+			}
+		}
+	</script>
+</head>
+<body>
+<script type="text/javascript">
+	//Le prénom de la copine de Mickey
+	document.write(mickey.copine.prenom);
+	document.write(mickey["copine"]["prenom"]);
+</script>
+</body>
+</html>

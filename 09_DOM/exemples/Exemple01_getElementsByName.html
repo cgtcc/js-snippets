@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>getElementsByName()</title>
+	<script type="text/javascript">
+		// Syntaxe : var elements = document.getElementsByName(name);
+		// Renvoie une liste des éléments portant un nom (attribut name)
+		// particulier dans le document (X)HTML.
+		//
+		// elements : est une liste d'éléments (NodeList).
+		// name     : est la valeur de l'attribut name des éléments à trouver.
+		function inverser(){
+			var preferences = document.getElementsByName("choix");
+			for (var i = 0, c = preferences.length; i < c; i++){
+					preferences[i].checked = !preferences[i].checked;
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action = "" method = "get">
+		<fieldset>
+			<legend><strong>Vos préférences</strong></legend>
+			<input type="checkbox" name="choix" id="pomme" value="pomme" />
+			<label for="pomme">Pomme</label><br />
+			<input type="checkbox" name="choix" id="poire" value="poire" />
+			<label for="poire">Poire</label><br />
+			<input type="checkbox" name="choix" id="mangue" value="mangue" checked="checked"/>
+			<label for="mangue">Mangue</label>
+		</fieldset>
+		<input type="button" value="Inverser la sélection" onclick="inverser();">
+	</form>
+</body>
+</html>

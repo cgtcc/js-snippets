@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 07 - Exercice 01</title>
+		<script type="text/javascript" src="util.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var email = prompt("Entrez votre adresse e-mail :", "emal@gmail.com");
+			var msg;
+			if (/^([a-z0-9._-]+)@([a-z0-9._-]+)\.([a-z]{2,6})$/.test(email)) {
+				msg  = "Nom d'usager : "   + RegExp.$1 + "<br />";
+				msg += "Nom de domaine : " + RegExp.$2 + "<br />";
+				msg += "Suffixe : "        + RegExp.$3;
+			} else {
+			    msg = "Adresse e-mail invalide !";
+			}
+			write(msg);
+		</script>
+	</body>
+</html>

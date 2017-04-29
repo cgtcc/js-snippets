@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Introduction aux phases capture et bouillonnement</title>
+	<style type="text/css">
+		div, span  { padding : 20px; }
+		#monDiv    { background-color: #B0B0B0; }
+		#monSpan_1 { background-color: #C0C0C0;	}
+		#monSpan_2 { background-color: #D0D0D0;	}
+	</style>
+	<script type="text/javascript" src="events.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", function(){
+
+			//Phase de bouillonnement
+			var useCapture = false;
+
+			document.getElementById("monSpan_1").addEventListener("click", afficherMsg1, false);
+			document.getElementById("monSpan_2").addEventListener("click", afficherMsg2, false);
+			document.getElementById("monDiv").addEventListener("click", afficherMsg, useCapture);
+
+			document.getElementById("clear").addEventListener("click", function(){
+				document.getElementById("txt").value = "";
+			}, false);
+
+		},false);
+
+		function afficherMsg() {
+			message("monDiv");
+		}
+		function afficherMsg1() {
+			message("monSpan_1");
+		}
+		function afficherMsg2() {
+			message("monSpan_2");
+		}
+
+		function message(str) {
+			document.getElementById("txt").value += "Évènement intercepté par : " + str + "\n";
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>Évènements capturés lors de la phase de <strong>bouillonnement</strong></legend>
+			<div id="monDiv">
+				<span id="monSpan_1">Le premier span</span>
+				<span id="monSpan_2">Le deuxième span</span>
+			</div>
+			<textarea id="txt" cols="45" rows="5"></textarea><br />
+			<input type="button" id="clear" value="Effacer" />
+		</fieldset>
+	</form>
+</body>
+</html>

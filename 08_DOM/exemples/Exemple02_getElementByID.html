@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>getElementById()</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Syntaxe : element = document.getElementById(id); 
+			//			 Renvoie l'élément dont l'ID est celui spécifié.
+			//			 element : objet de type element.
+			//			 id      : une chaîne représentant l'identifant
+			//			 		   unique de l'élément voulu.
+
+			window.onload = function() {
+				alert(document.getElementById("para"));
+			}
+		</script>
+		<p id="para">Mon paragraphe</p>
+	</body>
+</html>

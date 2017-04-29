@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Exercice 01</title>
+	<script type="text/javascript">
+		var fenetre;
+		//Utilisation d'une fonction anonyme pour l'attribut onload du document
+		window.onload = function(){
+			console.log(opener);
+			var width  = 400;
+			var height = 400;
+			var x = (window.screen.availWidth - width)/2;
+			var y = (window.screen.availHeight - height)/2;
+
+			var features = "width="   + width  +
+						   ",height=" + height +
+						   ",top="    + y      +
+						   ",left="   + x      +
+						   ",status=no,menubar=no,toolbar=no,scrollbars=no,location=no,resizeable=no";
+			
+			fenetre = window.open("fenetre.html","fenetre",features);
+
+		};
+
+		function sendMsg() {
+			fenetre.document.myForm.messageRecu.value = document.myForm.message.value;
+		}
+	</script>
+</head>
+<body>
+	<form name="myForm">
+		<label for="message">Message à envoyer : <label><input type="text" name="message" />
+		<input type="button" name="envoiMessage" value="Envoyer un message au popup" onclick="sendMsg()"/><br />
+		<label for="messageRecu">Message reçu du popup : <label><input type="text" name="messageRecu" />
+	</form>
+</body>
+</html>

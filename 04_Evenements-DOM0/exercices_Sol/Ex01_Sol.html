@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Exercice 01</title>
+		<script type="text/javascript">
+			var images;
+			var imagesURL;
+			var n;
+			window.onload = function(){
+				var baseURL = "./_images/";
+				n = -1;
+				images = new Array(3);
+				imagesURL = ["the1","the2","the3"];
+				for (var i=0; i< images.length;i++) {
+					images[i]= new Image();
+					images[i].src = baseURL + imagesURL[i] + ".jpg";
+				}
+				change();
+			}
+
+			function change() {
+				n = ++n%images.length;
+				window.document.animationDe.src=images[n].src;
+				return false;
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<img name="animationDe" id="animationDe" alt="animationDe"/>
+			<br />
+			<a href="#" onclick="return change();">Image suivante</a>
+		</div>
+	</body>
+</html>

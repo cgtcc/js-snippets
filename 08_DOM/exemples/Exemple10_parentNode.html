@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>parentNode</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : var element_parent = element.parentNode;
+			//			 La propriété parentNode renvoie l'élément parent de l'élément courant. 
+			//
+			//			 element_parent est l'élément parent du nœud courant. 
+			//			 parentNode renvoie null pour les types de nœud suivants :
+			//			 Attr, Document, DocumentFragment, Entity et Notation.
+			//			 Il renvoie également null si le nœud vient d'être créé et n'est pas
+			//			 encore attaché à l'arbre. 
+
+			window.onload = function() {
+				var form = document.getElementById("myForm");
+				var parent = form.parentNode;
+
+				if(parent == document.body) {
+					document.getElementById("txt").value = "Mon formulaire est au premier niveau";
+				}
+			}
+		</script>
+		<div>
+		<form id="myForm">
+			<input type="text" id="txt" size="30" />
+		</form>
+		</div>
+	</body>
+</html>

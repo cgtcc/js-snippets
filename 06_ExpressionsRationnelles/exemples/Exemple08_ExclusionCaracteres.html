@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Exclusion de caractères [^ ]</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Au sein d'une classe on peut également exclure des caractères.
+			// Pour ce faire, il suffit de faire figurer un accent circonflexe
+			// au début de la classe, juste après le premier crochet.
+			
+			write(/[^a]/.test("m"));          // Affiche true
+			write(/[^a-z]/.test("m"));        // Affiche false
+			write(/[^a-z]/.test("123"));      // Affiche true
+			write(/[^aeyuio]/.test("Mehdi")); // Affiche true
+			write(/^[^aeyuio]$/.test("m"));   // Affiche true
+			write(/^[^aeyuio]$/.test("i"));   // Affiche false
+		</script>
+	</body>
+</html>

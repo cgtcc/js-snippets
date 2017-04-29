@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <script type="text/javascript">
+        function reinitialiser() {
+            var reponse = window.confirm('désirez-vous rééllement réinitialiser tous les champs de ce formulaire?');
+
+            if (reponse == true) {
+                document.forms["formulaire"].reset();
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <form name="formulaire">
+        <label for="nom">Nom</label>
+        <input type="text" name="nom"><br />
+        <label for="idee">Votre idée</label>
+        <input type="text" name="idee"><br />
+        <input type="button" onclick="reinitialiser()" value="reset">
+    </form>
+</body>
+
+</html>

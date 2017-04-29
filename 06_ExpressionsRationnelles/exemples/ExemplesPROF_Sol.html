@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Exemples d'expressions régulières</title>
+        <script type="text/javascript" src="util.js"></script>
+        <script type="text/javascript">
+            function getRegAnswer(reg, str) {
+                return "<li>" + regTest(reg,str) + "</li>";
+            }
+        </script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var sol = "<h3>Solutions:</h3><ol>";
+
+            //recherche simple ////////////////////////////////////////////////////////////////////////////////////////
+            sol += getRegAnswer(/piano/, "J'aime écouter le piano"); // TRUE
+            sol += getRegAnswer(/piano/, "J'aime écouter le luth");  // FALSE
+
+            // OU /////////////////////////////////////////////////////////////////////////////////////////////////////
+            sol += getRegAnswer(/piano|luth/, "J'aime écouter le luth"); // TRUE
+
+            //Au début et à la fin ////////////////////////////////////////////////////////////////////////////////////
+            sol += getRegAnswer(/^Bonjour/, "Bonjour à tous");       // TRUE
+            sol += getRegAnswer(/tous$/, "Bonjour à tous");          // TRUE
+            sol += getRegAnswer(/^Bonjour tous$/, "Bonjour à tous"); //FALSE
+
+            //Les classes simples /////////////////////////////////////////////////////////////////////////////////////
+            sol += getRegAnswer(/gr[aoi]s/, "La nuit, tous les chats sont gris"); //TRUE
+            sol += getRegAnswer(/gr[aoi]s/, "La nuit, tous les chats sont gras"); //TRUE
+            sol += getRegAnswer(/gr[aoi]s/, "La nuit, tous les chats sont gros"); //TRUE
+            sol += getRegAnswer(/gr[ai]s/, "La nuit, tous les chats sont gros");  //FALSE
+
+            sol += getRegAnswer(/gr[aoi]s$/, "La nuit, tous les chats sont gris");//TRUE
+            sol += getRegAnswer(/[aeiouy]$/, "Je termine par une voyelle");       //TRUE
+            sol += getRegAnswer(/[aeiouy]$/, "Je ne termine pas par une voyelle !!!");//FALSE
+
+            //Les intervalles de classe ///////////////////////////////////////////////////////////////////////////////
+            sol += getRegAnswer(/[a-z]/, "Cette phrase contient une lettre !");//TRUE
+            sol += getRegAnswer(/[A-Z0-9]/, "cette phrase ne comporte ni majuscule ni chiffre");//FALSE
+            //sol += getRegAnswer(/<h[1-6]>/, "<h1>Une balise de titre HTML</h1>");//TRUE
+
+            //Exclusions //////////////////////////////////////////////////////////////////////////////////////////////
+            sol += getRegAnswer(/[^0-9]/, "Cette phrase contient autre chose que des chiffres");//TRUE
+            sol += getRegAnswer(/[^0-9]/, "012 ");//TRUE
+            sol += getRegAnswer(/[^0-9]/, "012");//FALSE
+            sol += getRegAnswer(/[^A-Z0-9]/, "1- Cette phrase contient autre chose que des majuscules et des chiffres !");//TRUE
+            sol += getRegAnswer(/^[^a-z]/, "Cette phrase ne commence pas par une minuscule");//TRUE
+            sol += getRegAnswer(/[^aeiouy]$/, "Cette phrase ne se termine pas par une voyelle");//FALSE
+
+            //Les quantificateurs /////////////////////////////////////////////////////////////////////////////////////
+            /*0 ou 1*/
+            sol += getRegAnswer(/bor?is/, "boris");//TRUE
+            sol += getRegAnswer(/bor?is/, "bois");//TRUE
+            sol += getRegAnswer(/a?/, "Mon luth");//TRUE
+
+            /*1 ou plus*/
+            sol += getRegAnswer(/a+/, "Mon luth");//FALSE
+            sol += getRegAnswer(/a+/, "a");//TRUE
+            sol += getRegAnswer(/a+/, "aa");//TRUE
+            sol += getRegAnswer(/a+/, "aaa");//TRUE
+            sol += getRegAnswer(/a+/, "Mon beau piano");//TRUE
+
+            /*0 ou plus*/
+            sol += getRegAnswer(/a*/, "Mon luth");//TRUE
+            sol += getRegAnswer(/a*/, "Mon beau piano");//TRUE
+
+            sol += getRegAnswer(/[0-9]+/, "Magnifique");//FALSE
+            sol += getRegAnswer(/^Yaho+/, "Yahoooooo, c'est génial");//TRUE
+            sol += getRegAnswer(/^Yaho+$/, "Yahoooooo, c'est génial");//FALSE
+
+            //Groupements ////////////////////////////////////////////////////////////////////////////////////////////
+            sol += getRegAnswer(/Ay(ay)*/, "Ay");//TRUE
+            sol += getRegAnswer(/Ay(ay)*/, "Ayay");//TRUE
+            sol += getRegAnswer(/Ay(ay)*/, "Ayayay ay");//TRUE
+            sol += getRegAnswer(/Ay(ay)*/, "ay");//FALSE
+
+            sol += getRegAnswer(/^Bla(bla)*$/, "Blablablablabla");//TRUE
+            sol += getRegAnswer(/^Bla(bla)*$/, "Bla");//TRUE
+
+            /*Plus précis -> Accolades*/
+            sol += getRegAnswer(/^e{2}/, "iee");//FALSE
+            sol += getRegAnswer(/^e{2}/, "e");//FALSE
+            sol += getRegAnswer(/^e{2}/, "ee");//TRUE
+            sol += getRegAnswer(/^e{2}/, "eee");//TRUE
+            sol += getRegAnswer(/^e{2}$/, "eee");//FALSE
+            sol += getRegAnswer(/^Bla(bla){3}$/, "Blablablabla");//TRUE
+            sol += getRegAnswer(/^[0-9]{6}$/, "546980");//TRUE
+
+            sol += getRegAnswer(/^[0-9]{4,6}$/, "980");//FALSE
+            sol += getRegAnswer(/^[0-9]{4,6}$/, "6320");//TRUE
+            sol += getRegAnswer(/^[0-9]{4,6}$/, "69008");//TRUE
+            sol += getRegAnswer(/^[0-9]{4,6}$/, "312855");//TRUE
+
+            sol += getRegAnswer(/^[0-9]{4,}$/, "312");//FALSE
+            sol += getRegAnswer(/^[0-9]{4,}$/, "3561");//TRUE
+            sol += getRegAnswer(/^[0-9]{4,}$/, "35697487461");//TRUE
+
+            //Meacaractères //////////////////////////////////////////////////////////////////////////////////////////
+            sol += getRegAnswer(/^Quoi \?$/, "Quoi ?");//TRUE
+            sol += getRegAnswer(/impatient \!/, "Il est impatient !");//TRUE
+            sol += getRegAnswer(/(très) fatigué/, "Elle est (très) fatiguée");//FALSE
+            sol += getRegAnswer(/\(très\) fatigué/, "Elle est (très) fatiguée");//TRUE
+            sol += getRegAnswer(/etc.../, "etc---");//TRUE
+            sol += getRegAnswer(/etc\.\.\./, "etc---");//FALSE
+            sol += getRegAnswer(/etc\.\.\./, "etc...");//TRUE
+            sol += getRegAnswer(/:-[\)\(o\|]$/, "Un smiley :-)");//TRUE
+
+            sol += "</ol>"
+
+            write(sol);
+
+        </script>
+    </body>
+</html>

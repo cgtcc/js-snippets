@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>previousSibling</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : var noeud_precedent = noeud.previousSibling
+			//			 Renvoie le nœud (node) précédant immédiatement le nœud
+			//			 courant dans la liste des enfants de son parent (childNodes),
+			//			 ou null s'il s'agit du premier nœud de la liste. 
+
+			window.onload = function() {
+				var el = document.getElementById('div4')
+				var msg = "<ol>";
+				while (el) {
+					msg += "<li>" + el.nodeName + " / Contenu :" +
+						   ((el.hasChildNodes()) ? el.firstChild.nodeValue : "") +
+						   "</li>";
+					el = el.previousSibling;
+				}
+				msg += "</ol>";
+				document.write(msg);
+  			}
+		</script>
+		<div id="div1">1</div><div id="div2">2</div><div id="div3">3</div><div id="div4">4</div>
+	</body>
+</html>

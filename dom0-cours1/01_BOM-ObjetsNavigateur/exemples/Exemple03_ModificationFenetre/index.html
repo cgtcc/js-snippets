@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Modification de fenêtres</title>
+</head>
+<body>
+	<form name="myForm">
+		<input type="text" name="features" /><br />
+		<input type="button" name="nouvelleFenetre" value="Ouvrir la fenêtre" onclick="openWindow()"/>
+	</form>
+
+	<script type="text/javascript">
+		//Utilisation d'une fonction anonyme pour l'attribut onload du document
+		document.onload = (function(){
+			var features = "width=600,height=500,status=yes,menubar=no,toolbar=no,scrollbars=no,location=no,resizeable=no";
+			document.myForm.features.value = features;
+			document.myForm.features.size = features.length;
+		})();
+
+		function openWindow() {
+			window.open("fenetre.html","fenetre",window.document.myForm.features.value);
+		}
+		//helpWindow.focus();
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>L'objet RegExp</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// L'objet RegExp est l'objet qui gère les expressions régulières.
+			// Il y a donc deux façons de déclarer une regex : via RegExp ou via
+			// son type primitif que nous avons utilisé jusqu'à présent :
+
+			var myRegex1 = /^Programmation$/i;
+			var myRegex2 = new RegExp("^Programmation$", "i");
+
+			// Le constructeur RegExp reçoit deux paramètres : le premier est
+			// l'expression régulière sous la forme d'une chaîne de caractères,
+			// et le deuxième est l'option de recherche, ici i.
+			// L'intérêt d'utiliser RegExp est qu'il est possible d'inclure des
+			// variables dans la regex, chose impossible en passant par le type primitif :
+			
+			var nickname = "EMAL";
+			var myRegex  = new RegExp("Mon pseudonyme est " + nickname, "i");
+
+		</script>
+	</body>
+</html>

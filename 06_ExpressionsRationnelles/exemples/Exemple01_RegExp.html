@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>L'objet RegExp</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			//Cela ressemble à une chaîne de caractères à l'exception près
+			//qu'elle est encadrée par deux slashs / au lieu des apostrophes
+			//ou guillemets traditionnels.
+			var myRegex = /contenu_à_rechercher/;
+			
+			//Si votre regex contient elle-même des slashs, n'oubliez pas de
+			//les échapper en utilisant un anti-slash comme suit :
+			
+			//var regex_1 = /contenu/contenu/; //ERREUR
+			var regex_2 = /contenu\/contenu/;  //OK
+		
+		</script>
+	</body>
+</html>

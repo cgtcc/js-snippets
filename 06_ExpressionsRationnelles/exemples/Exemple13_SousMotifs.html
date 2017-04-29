@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Les sous-motifs</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Dans un motif, les parenthèses peuvent être utiles à grouper
+			// des éléments ou à les capturer. Dans cet exemple, nous allons
+			// explorer la première utilité.
+			
+			write(/Bla( bla)*/.test("Bla"));                    // Affiche true
+			write(/Bla( bla)*\.{3}/.test("Bla bla bla..."));    // Affiche true
+			
+			var motif;
+			
+			motif = /^(Aujourd'hui, )?nous sommes lundi|mardi|mercredi|$/i;
+			write(motif.test("Nous sommes lundi"));             // Affiche true
+
+			motif = /^(Aujourd'hui, )?nous sommes lundi|mardi|mercredi|$/i;
+			write(motif.test("Aujourd'hui, nous sommes mardi")); // Affiche true
+		</script>
+	</body>
+</html>

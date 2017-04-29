@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>nodeType</title>
+		<script type="text/javascript" src="io.js"></script>
+		<script type="text/javascript">
+			function getNodeTypeStr(nb) {
+				switch(nb) {
+					case Node.ELEMENT_NODE   :	return "Balise";
+					case Node.ATTRIBUTE_NODE :	return "Attribut";
+					case Node.TEXT_NODE      :	return "Texte";
+					case Node.DOCUMENT_NODE  :	return "Document";
+					case Node.DOCUMENT_FRAGMENT_NODE : return "Fragment";
+					default : return nb;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : var type = node.nodeType
+			//	 Renvoie un code (entier) représentant le type du nœud. 
+			//	 
+			//	 type est un entier court non signé avec l'une des
+			//	 valeurs suivantes :
+			//	 Type de noeud						Description
+			//	 -------------------------------	-----------------------
+			//	 1 (Node.ELEMENT_NODE)				Balise
+			//	 2 (Node.ATTRIBUTE_NODE)			Attribut
+			//	 3 (Node.TEXT_NODE)					Texte (espaces compris)
+			//	 8 (Node.COMMENT_NODE)				Commentaire HTML
+			//	 9 (Node.DOCUMENT_NODE)				Document
+			//	 10(Node.DOCUMENT_TYPE_NODE)		DTD
+			//	 11(Node.DOCUMENT_FRAGMENT_NODE)	Fragment
+			
+			window.onload = function() {
+				var s = "";
+
+				//window.alert(document.getElementById("para").childNodes[2]);
+
+				with (document.getElementById("para")) {
+					
+					for (var i=0; i<childNodes.length; i++) {
+						with (childNodes[i]) {
+							s += nodeType + " : " + getNodeTypeStr(nodeType) + " ( " + nodeName + " )\n";
+						}
+					}
+				}
+				window.alert(s);
+			}
+		</script>
+		<p id="para">
+			<em>DOM</em> - <strong>JavaScript</strong><br />HTML
+		</p>
+	</body>
+</html>

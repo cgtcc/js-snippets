@@ -1,0 +1,25 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <script>
+        function valider() {
+            var data = document.forms["formulaire"]["string"].value;
+            /^(\s+)(.+?)(\s)$/.exec(data);
+            var resultat = document.getElementById('resultat');
+            resultat.innerHTML = RegExp.$2;
+            return false;
+        }
+    </script>
+</head>
+
+<body>
+    <form name="formulaire">
+        <label for="string">Data</label>
+        <input type="text" name="string">
+        <input type="submit" onclick="return valider()">
+    </form>
+    <div id="resultat"></div>
+</body>
+
+</html>

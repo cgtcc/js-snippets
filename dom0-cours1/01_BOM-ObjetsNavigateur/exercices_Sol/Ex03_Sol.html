@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Série 01 - Exercice 03</title>
+</head>
+<body>
+		<script type="text/javascript">
+		document.onload = function(){
+			var knownBrowsers = ["Firefox", "Chrome", "Opera", "Safari", "MSIE"];
+			var browser = window.navigator.userAgent;
+			for (var i = 0; i < knownBrowsers.length; i++){
+				if(browser.indexOf(knownBrowsers[i]) != -1) {
+					browser = knownBrowsers[i];
+					break;
+				}
+			}
+			
+			document.write("Votre navigateur est <strong>" + browser + "</strong>");
+		};
+	</script>
+</body>
+</html>

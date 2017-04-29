@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>appendChild</title>
+		<script type="text/javascript" src="io.js"></script>
+		<script type="text/javascript">
+			// Syntaxe : var elementAjoute = element.appendChild(enfant);
+			//			 Ajoute un nœud à la fin de la liste des enfants d'un nœud
+			//			 parent spécifié. Si le nœud existe déjà, il est retiré de
+			//			 son nœud parent actuel et ajouté au nouveau nœud parent.
+			//			 element : est l'élément parent.
+    		//			 enfant  : est le nœud à ajouter sous element.
+    		//			 elementAjoute : contiendra l'élément ajouté, soit enfant.
+
+    		var element;
+			var parent;
+
+    		window.onload = function(){
+    			element = document.getElementById('div2');
+    			parent  = element.parentNode;
+    		};
+
+			function removeOrAddDiv2() {
+				if(element.parentNode == parent) {
+					//div2 est un enfant de div1, il faut donc le supprimer
+					parent.removeChild(element);
+					document.getElementById("btn").value = "Ajouter div2";
+				} else {
+					//div2 n'est pas un enfant de div1, il faut donc l'ajouter
+					parent.appendChild(element);
+					document.getElementById("btn").value = "Supprimer div2";
+				}
+				
+  			}
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			<div id="div2">Contenu de div2</div>
+		</div>
+		<form>
+			<input type="button" id="btn" value="Supprimer div2" onclick="removeOrAddDiv2();"/>
+		</form>
+	</body>
+</html>

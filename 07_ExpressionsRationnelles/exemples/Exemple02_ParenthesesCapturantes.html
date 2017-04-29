@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Les parenthèses capturantes</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Les parenthèses servent aussi à extraire des informations :
+			// Pour définir les informations à extraire, on utilise des parenthèses,
+			// que l'on appelle parenthèses capturantes, car leur utilité est de capturer
+			// une portion de texte, que la regex va extraire.
+
+			// Considérons cette chaîne de caractères : « Mon pseudonyme est : EMAL».
+			// Au moyen de parenthèses capturantes, nous allons extraire le pseudonyme,
+			// pour pouvoir le réutiliser :
+
+			var pseudo = "Mon pseudonyme est : EMAL.";
+ 			/^Mon pseudonyme est : (\S+).$/.exec(pseudo);
+ 			document.write(RegExp.$1); // Affiche : « EMAL »
+
+ 			// La regex est exécutée via exec(). Et ici une autre explication s'impose.
+ 			// Quand on exécute test() ou exec(), le contenu des parenthèses capturantes
+ 			// est enregistré temporairement au sein de l'objet RegExp.
+ 			// Le premier couple de parenthèses sera enregistré dans la propriété $1,
+ 			// le deuxième dans $2 et ainsi de suite, jusqu'au neuvième, dans $9.
+ 			// Cela veut donc dire qu'il ne peut y avoir qu'un maximum de neuf couples de
+ 			// parenthèses. Les couples sont numérotés suivant le sens de lecture, de gauche à droite.
+			// Et pour accéder aux propriétés, il suffit de faire RegExp.$1, RegExp.$2, etc.
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>nodeValue</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// Syntaxe : valeur = nœud.nodeValue
+			//	 Renvoie ou définit la valeur du nœud courant.
+			//	 
+			//	 valeur est une chaîne contenant la valeur du nœud courant,
+			//	 si applicable.
+			//
+			//	 Pour le document lui-même, nodeValue renvoie null. Pour des
+			//	 nœuds texte, de commentaires et CDATA, nodeValue renvoie le
+			//	 contenu du nœud. Pour les nœuds d'attributs, il s'agira de 
+			//	 la valeur de l'attribut.
+			
+			window.onload = function() {
+				var s = "nodeType\tnodeName\tnodeValue\n" + 
+				        "-------------\t---------------\t--------------\n";
+				with (document.getElementById("para")) {
+					for (var i=0; i<childNodes.length; i++) {
+						with (childNodes[i]) {
+							s += nodeType + "\t\t" +
+								 nodeName + "\t\t" +
+								 nodeValue + "\n";
+						}
+					}
+				}
+				document.getElementById("text").value = s;
+			}
+		</script>
+		<p id="para">
+			<!-- Ne pas oublier de commenter -->
+			<em>DOM</em> - <strong>JavaScript</strong><br />HTML
+		</p>
+		<form name="myForm"><textarea id="text"></textarea></form>
+	</body>
+</html>

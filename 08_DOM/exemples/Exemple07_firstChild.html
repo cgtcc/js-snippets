@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>firstChild</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			// Syntaxe : noeudEnfant = noeud.firstChild;
+			//			 Renvoie le premier nœud enfant du nœud courant,
+			//			 ou null s'il n'en a pas. 
+			//
+			//			 La variable noeudEnfant est une référence au premier
+			//			 enfant de noeud s'il y en a un. 
+
+			window.onload = function() {
+				var p01 = document.getElementById('para-01');
+  				var str = p01.firstChild.nodeName + "\n"; // #text
+  				
+				// Dans le code ci-dessus, l'alerte affichera « #text » car
+				// un nœud texte a été inséré pour préserver les blancs entre
+				// la fin des balises ouvrante <p> et <span>.
+				// Tout espace provoquera l'insertion d'un nœud texte,
+				// qu'il s'agisse d'un simple espace ou de plusieurs,
+				// de retours à la ligne, tabulations, etc.
+				// Un autre nœud texte est inséré entre les balises de fermeture
+				// </span> et </p>. 
+
+				var p02 = document.getElementById('para-02');
+  				str += p02.firstChild.nodeName; // SPAN
+
+  				window.alert(str);
+			}
+		</script>
+		<p id="para-01">
+		  <span>Premier span</span>
+		</p>
+		<p id="para-02"><span>Second span</span></p>
+	</body>
+</html>

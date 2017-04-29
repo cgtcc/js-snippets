@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Série 09 - Exercice 07</title>
+	<script type="text/javascript">
+		function resume(){
+			var choixSexes = document.getElementsByName("sexe");
+			
+			for (var i = 0, c = choixSexes.length; i < c && !choixSexes[i].checked; i++);
+			var msg = "Votre sexe : " + choixSexes[i].value + "\n";
+
+			var preferences = document.getElementsByName("choix");
+			msg += "Vos préférences : ";
+			for (var i = 0, c = preferences.length; i < c; i++){
+				if(preferences[i].checked)
+					msg += preferences[i].value + " ";
+			}
+			window.alert(msg);
+		}
+	</script>
+</head>
+<body>
+	<form action = "" method = "get">
+		<fieldset>
+			<legend><strong>Votre sexe</strong></legend>
+			<input type="radio" name="sexe" id="sexe_homme" value="homme" checked="checked"/>
+			<label for="sexe_homme">Homme</label><br />
+			<input type="radio" name="sexe" id="sexe_femme" value="femme" />
+			<label for="sexe_femme">Femme</label><br />
+			<input type="radio" name="sexe" id="sexe_nd" value="Ne sais pas" />
+			<label for="sexe_nd">Ne sait pas</label><br />
+		</fieldset>
+		<!-- Deuxième groupe de composants-->
+		<fieldset>
+			<legend><strong>Vos préférences</strong></legend>
+			<input type="checkbox" name="choix" id="pomme" value="pomme" />
+			<label for="pomme">Pomme</label><br />
+			<input type="checkbox" name="choix" id="poire" value="poire" />
+			<label for="poire">Poire</label><br />
+			<input type="checkbox" name="choix" id="mangue" value="mangue" checked="checked"/>
+			<label for="mangue">Mangue</label>
+		</fieldset>
+		<input type="button" value="Résumer" onclick="resume();">
+	</form>
+</body>
+</html>

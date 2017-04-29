@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Création de fenêtres personnalisées</title>
+</head>
+<body>
+	
+	<form name="configuration">
+		<fieldset>
+			<legend><b>Mode d'affichage</b></legend>
+			<input type="radio" name="mode" value="alwaysLowered" checked="checked" />alwaysLowered<br />
+			<input type="radio" name="mode" value="alwaysRaised"                    />alwaysRaised <br />
+			<input type="radio" name="mode" value="dependent"                       />dependent    <br />
+			<input type="radio" name="mode" value="modal"                           />modal        <br />
+			<input type="radio" name="mode" value="dialog"                          />dialog       <br />
+		</fieldset>
+		<fieldset>
+			<legend><b>Options d'affichage</b></legend>
+			<input type="checkbox" name="options" value="directories" checked="checked" />directories<br />
+			<input type="checkbox" name="options" value="menubar"     checked="checked" />menubar<br />
+			<input type="checkbox" name="options" value="toolbar"     checked="checked" />toolbar<br />
+			<input type="checkbox" name="options" value="location"    checked="checked" />location<br />
+			<input type="checkbox" name="options" value="status"      checked="checked" />status<br />
+			<input type="checkbox" name="options" value="resizable"   checked="checked" />resizable<br />
+			<input type="checkbox" name="options" value="scrollbars"  checked="checked" />scrollbars<br />
+			<input type="checkbox" name="options" value="minimizable" checked="checked" />minimizable<br />
+			<input type="checkbox" name="options" value="titlebar"    checked="checked" />titlebar<br />
+			<input type="checkbox" name="options" value="close"       checked="checked" />close<br />
+		</fieldset>
+		<fieldset>
+			<legend><b>Dimensions et position</b></legend>
+			<input type="radio" name="height" value="height" checked="checked" />height :
+			<input type="text" name="dimHeight" size="4" maxlength="4" value="300" /><br />
+			<input type="radio" name="height" value="outerHeight" />outerHeight :
+			<input type="text" name="dimOuterHeight" size="4" maxlength="4" value="300" /><br />
+			<input type="radio" name="width" value="width" checked="checked"/>width :
+			<input type="text" name="dimWidth" size="4" maxlength="4" value="300" /><br />
+			<input type="radio" name="width" value="outerWidth" />outerWidth :
+			<input type="text" name="dimOuterWidth" size="4" maxlength="4" value="300" /><br />
+			
+
+			<input type="checkbox" name="top" value="top" checked="checked" />top  :
+			<input type="text" name="posTop"  size="4" maxlength="4" value="100" /><br />
+			<input type="checkbox" name="left" value="left" checked="checked" />left :
+			<input type="text" name="posLeft" size="4" maxlength="4" value="100" /><br />
+		</fieldset>
+		<input type="submit" value="Ouvrir la fenêtre" onclick="openWindow()"/>
+	</form>
+	
+
+	<script type="text/javascript">
+		
+		/*
+
+		Syntaxe
+			var windowObjectReference = window.open(strUrl, strWindowName[, strWindowFeatures]);
+
+			Crée une nouvelle fenêtre de navigation secondaire et y charge la ressource référencée. 
+		
+		Description
+
+		La méthode open() crée une nouvelle fenêtre secondaire de navigation, de façon similaire au choix de l'option Nouvelle fenêtre du menu Fichier. Le paramètre strUrl spécifie l'URL à récupérer et à charger dans la nouvelle fenêtre. Si strUrl est une chaîne vide, une nouvelle fenêtre vide de tout contenu (l'URL about:blank sera chargée) est créée avec les barres d'outils par défaut de la fenêtre principale.
+
+		Notez que les URL distantes ne seront pas chargées instantanément. Lorsque l'appel à window.open() se termine et renvoie sa valeur, la fenêtre contient toujours about:blank. Le chargement proprement dit de l'URL est reporté et ne commence effectivement qu'après la fin de l'exécution du bloc de script courant. La création de la fenêtre d'une part et le chargement de la ressource référencée d'autre part sont faits de manière asynchrone. 
+
+		WindowObjectReference 
+		    Il s'agit de la référence pointant vers la fenêtre de navigation nouvellement créée. Cette référence est la valeur renvoyée par la méthode open() ; elle sera à null si pour une raison ou une autre l'appel n'a pas réussi à ouvrir une fenêtre. Une variable globale est le meilleur endroit pour stocker une telle référence. Il est alors possible, par exemple, de l'utiliser pour obtenir certaines propriétés de la nouvelle fenêtre, ou accéder à certaines de ses méthodes, à condition que la relation entre votre fenêtre principale et votre fenêtre secondaire soit conforme aux paramètres de sécurité de même origine (Same origin policy security requirements). 
+
+		strUrl 
+		    Il s'agit de l'URL à charger dans la fenêtre nouvellement créée. strUrl peut être un document HTML, un fichier image, ou tout autre type de fichier géré par le navigateur. 
+
+		strWindowName 
+		    Il s'agit de la chaîne d'identification de la nouvelle fenêtre. Celle-ci peut être utilisée pour être la cible de liens et de formulaires lorsque l'attribut target d'un élément <a> ou d'un élément <form> est spécifié. Cette chaîne ne peut contenir d'espaces. strWindowName ne spécifie pas le titre de la fenêtre, juste son nom interne. 
+
+		strWindowFeatures 
+		    Paramètre optionnel. Il s'agit de la chaîne listant les fonctionnalités de la nouvelle fenêtre de navigation (et de ses barres d'outils). Cette chaîne ne peut contenir d'espaces. Chaque fonctionnalité doit être séparée par une virgule au sein de la chaîne de caractères. 
+
+			alwaysLowered
+				Si défini à yes, la nouvelle fenêtre créé flottera par dessous sa propre fenêtre parente tant que celle-ci n'est pas réduite. Les fenêtres utilisant alwaysLowered sont souvent appelées pop-under. Celles-ci ne peuvent pas passer au dessus de leur fenêtre parente, mais celle-ci peut être réduite.
+				- Reconnu par : Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x
+				- Valeur par défaut : no
+			
+			alwaysRaised
+				Si défini à yes, la nouvelle fenêtre sera toujours affichée par dessus les autres fenêtres du navigateur, qu'elle soit active ou non.
+				- Reconnu par : Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x
+				- Valeur par défaut : no
+			
+			dependent 
+			    Si définie à yes, la nouvelle fenêtre est dite dépendante de sa fenêtre parente. Une fenêtre dépendante se ferme lorsque sa fenêtre parente est fermée. Une fenêtre dépendante est réduite dans la barre des tâches uniquement lorsque sa fenêtre parente est réduite. Sur les plateformes Windows, une fenêtre dépendante n'est pas affichée sur la barre des tâches. Elle reste également en avant-plan de la fenêtre parente. 
+			    Les fenêtres dépendantes n'existent pas sous Mac OS X, cette option y sera ignorée. 
+				- Reconnu par : Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x
+				- Valeur par défaut : no
+
+			modal 
+			    Note : à partir de Mozilla 1.2.1, cette fonctionnalité requiert le privilège UniversalBrowserWrite . Sans ce privilège, elle est équivalente à dependent. 
+			    Si définie à yes, la nouvelle fenêtre est dite modale. L'utilisateur ne peut pas retourner à la fenêtre principale tant que la fenêtre modale n'est pas fermée. Une fenêtre modale typique est créée par la fonction alert(). 
+			    Le comportement exact des fenêtres modales dépend de la plateforme et de la version de Mozilla. 
+			    L'équivalent de cette fonctionnalité dans Internet Explorer 6 est la méthode showModalDialog(). 
+			    - Reconnu par : Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x 
+
+			dialog 
+			    La fonctionnalité dialog retire toutes les icônes (restaurer, réduire, agrandir) de la barre de titre de la fenêtre, laissant uniquement le bouton de fermeture. Firefox et son menu de commandes système sous WindowsMozilla 1.2+ et Netscape 7.1 afficheront les autres commandes du menu système (dans Firefox 1.0 et Netscape 7.0x, le menu de commandes système n'est pas associé avec l'icône de Firefox/Netscape 7.0x à l'extrémité gauche de la barre de titre, il s'agit probablement d'un bug. Il est possible d'accéder au menu de commandes système avec un clic droit sur la barre de titre). Les fenêtres de dialogue sont des fenêtres qui n'ont pas d'icône de commande système de réduction ni d'agrandissement/restauration dans la barre de titre, ni dans les choix correspondants du menu de commandes système. On les appelle dialogues car leur utilisation normale est uniquement de notifier une information et d'être ensuite immédiatement fermées. Sur les systèmes Mac, les fenêtres de dialogue ont une bordure différente et peuvent prendre la forme de sheets. 
+			    Reconnu par : Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x 
+
+			directories 
+			    Si cette fonctionnalité est définie à yes, la nouvelle fenêtre secondaire affichera la barre personnelle dans les navigateurs Netscape 6.x, Netscape 7.x, Mozilla et Firefox. Dans Internet Explorer 5+, la barre de liens sera affichée. En plus de la barre personnelle, les navigateurs Mozilla afficheront la barre de navigation du site si celle-ci est visible et présente dans la fenêtre parente. 
+			    Les utilisateurs de Mozilla et Firefox peuvent obliger les nouvelles fenêtres à toujours afficher leur barre personnelle en positionnantdom.disable_window_open_feature.directories à true dans about:config ou dans leur fichier user.js. 
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x
+			    - Valeur par défaut : yes 
+
+			height 
+			    Spécifie la hauteur de la zone de contenu, l'espace de visualisation de la nouvelle fenêtre secondaire, en pixels. La valeur de hauteur comprend celle de la barre de défilement horizontale si celle-ci est présente. La valeur minimale requise est 100. 
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x, Opera 6+ 
+
+			width 
+			    Spécifie la largeur de la zone de contenu, l'espace de visualisation de la nouvelle fenêtre secondaire, en pixels. La valeur de largeur comprend celle de la barre de défilement verticale si celle-ci est présente. Elle ne prend pas en compte un éventuel panneau latéral si celui-ci est déplié. La valeur minimale requise est 100. 
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x, Opera 6+ 
+
+			outerHeight 
+			    Spécifie la hauteur de toute la fenêtre de navigation en pixels. Cette valeur outerHeight comprend toute barre d'outils présente, la barre de défilement horizontale de la fenêtre (si présente) et les bordures inférieures et supérieures. La valeur minimale requise est 100.
+			    - Note : étant donné que la barre de titre est toujours visible, demander une valeur outerHeight=100 rendra la valeur innerHeight de la fenêtre de navigation plus petite que les 100 pixels minimaux habituels. 
+			    - Reconnu par : Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x 
+
+			outerWidth 
+			    Spécifie la largeur de toute la fenêtre de navigation en pixels. Cette valeur outerWidth comprend la barre de défilement verticale (si présente) et les bords gauche et droits de la fenêtre. 
+			    - Reconnu par : Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x 
+
+			top 
+			    Spécifie la distance à laquelle la nouvelle fenêtre est placée depuis le bord supérieur de la zone de travail destinée aux applications du système d'exploitation de l'utilisateur jusqu'à la bordure extérieure (bordure de redimensionnement) de la fenêtre de navigation. La nouvelle fenêtre ne peut pas être positionnée initialement hors de l'écran. 
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x, Opera 6+ 
+
+			left 
+			    Spécifie la distance à laquelle la nouvelle fenêtre est placée depuis le bord gauche de la zone de travail destinée aux applications du système d'exploitation de l'utilisateur jusqu'à la bordure extérieure (bordure de redimensionnement) de la fenêtre de navigation. La nouvelle fenêtre ne peut pas être positionnée initialement hors de l'écran. 
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x, Opera 6+ 
+
+			menubar 
+			    Si cette fonctionnalité est définie à yes, la nouvelle fenêtre secondaire disposera d'une barre de menus. 
+			    Les utilisateurs de Mozilla et Firefox peuvent obliger les nouvelles fenêtres à toujours avoir une barre de menus en positionnant dom.disable_window_open_feature.menubar à true dans about:config ou dans leur fichier user.js. 
+			    Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x 
+
+			toolbar 
+			    Si cette fonctionnalité est définie à yes, la nouvelle fenêtre secondaire disposera d'une barre de navigation (boutons Précédente, Suivante, Actualiser et Arrêter). En plus de la barre de navigation, les navigateurs basés sur Mozilla afficheront également la barre d'onglets si elle est toujours visible et présente dans la fenêtre parente. 
+			    Les utilisateurs de Mozilla et Firefox peuvent obliger les nouvelles fenêtres à toujours afficher la barre de navigation en positionnant dom.disable_window_open_feature.toolbar à true dans about:config ou dans leur fichier user.js. 
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x
+
+			location 
+			    Si cette fonctionnalité est définie à yes, la nouvelle fenêtre secondaire affichera une barre d'adresse (ou d'emplacement). 
+			    Les utilisateurs de Mozilla et Firefox peuvent obliger les nouvelles fenêtres à toujours afficher la barre d'adresse en positionnant dom.disable_window_open_feature.location à true dans about:config ou dans leur fichier user.js
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x, Opera 6+
+
+			status 
+			    Si cette fonctionnalité est définie à yes, la nouvelle fenêtre secondaire disposera d'une barre d'état. Les utilisateurs peuvent forcer la présence de la barre d'état dans tous les navigateurs basés sur Mozilla, dans Internet Explorer 6 SP2 et dans Opera 6+. Les réglages par défaut des navigateurs récents basés sur Mozilla et Firefox 1.0 forcent la présence de la barre d'état. 
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x
+
+			resizable 
+			    Si cette fonctionnalité est définie à yes, la nouvelle fenêtre secondaire sera redimensionnable. 
+			    Note : à partir de la version 1.4, les navigateurs basés sur Mozilla ont une zone de redimensionnement à l'extrémité droite de la barre d'état. Cela permet de s'assurer que les utilisateurs peuvent toujours redimensionner la fenêtre même si l'auteur de la page Web a demandé que cette fenêtre secondaire ne soit pas redimensionnable. Dans ce cas, les icônes de maximisation/restauration dans la barre de titre de la fenêtre seront désactivées et les bordures de la fenêtre ne permettront pas de la redimensionner, mais celle-ci pourra toujours être redimensionnée via cette zone de la barre d'état. 
+			    Dans les dernières versions de Firefox, toutes les fenêtres secondaires seront redimensionnables.
+
+				Astuce : pour des raisons d'accessibilité, il est vivement recommandé de toujours définir cette fonctionnalité à yes.
+
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x 
+
+			 scrollbars 
+				Si cette fonctionnalité est définie à yes, la nouvelle fenêtre secondaire affichera des barres de défilement horizontales et/ou verticales si le document ne rentre pas dans la zone d'affichage de la fenêtre. 
+
+				Astuce : pour des raisons d'accessibilité, il est vivement recommandé de toujours définir cette fonctionnalité à yes.
+
+			    Les utilisateurs de Mozilla et Firefox peuvent obliger cette option à être toujours activée en positionnant dom.disable_window_open_feature.scrollbars à true dans  about:config ou dans leur fichier user.js. 
+			    - Reconnu par : Internet Explorer 5+, Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x 
+
+			minimizable 
+			    Ce paramètre peut uniquement s'appliquer à des fenêtres de dialogue ; l'utilisation de « minimizable » nécessite dialog=yes. Si minimizable est défini à yes, le nouveau dialogue aura une commande système de réduction dans la barre de titre et il sera possible de le réduire dans la barre des tâches. Toute fenêtre n'étant pas un dialogue est toujours réductible, cette option y sera donc ignorée. 
+			    - Reconnu par : Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x
+
+			titlebar 
+			    Par défaut, toutes les nouvelles fenêtres secondaires ont une barre de titre. Si défini à no, ce paramètre enlève la barre de titre de la nouvelle fenêtre secondaire. 
+			    Les utilisateurs de Mozilla et Firefox peuvent obliger les nouvelles fenêtres à toujours avoir une barre de titre en positionnantdom.disable_window_open_feature.titlebar à true dans about:config ou dans leur fichier user.js
+
+			close 
+			    Lorsque défini à no, ce paramètre supprime l'icône système de fermeture de la fenêtre, et l'élément de menu correspondant. Il fonctionnera uniquement pour les fenêtres de dialogue (avec la fonctionnalité dialog activée). close=no a précédence sur minimizable=yes. 
+			    Les utilisateurs de Mozilla et Firefox peuvent obliger les nouvelles fenêtres à toujours avoir un bouton de fermeture en positionnant dom.disable_window_open_feature.close à true dans about:config ou dans leur fichier user.js. 
+			    Reconnu par : Netscape 6.x, Netscape 7.x, Mozilla 1.x, Firefox 1.x 
+
+		*/
+
+
+
+		function openWindow() {
+			var features = "";
+			var form = window.document.configuration;
+
+
+			var modes = form.mode;
+			for(var i=0; i<modes.length; i++) {
+				if(modes[i].checked) {
+					features += modes[i].value + "=yes";
+					break;
+				}
+			}
+
+			var options = form.options;
+			for(var i=0; i<options.length; i++) {
+				features += "," + options[i].value + "=";
+				features += (options[i].checked) ? "yes" : "no";
+			}
+
+			var height = form.height;
+			if(height[0].checked)
+				features += ",height=" + form.dimHeight.value;
+			else if(height[1].checked)
+				features += ",outerHeight=" + form.dimOuterHeight.value;
+
+			var width = form.width;
+			if(width[0].checked)
+				features += ",width=" + form.dimWidth.value;
+			else if(width[1].checked)
+				features += ",outerWidth=" + form.dimOuterWidth.value;
+
+			if(form.top.checked) features += ",top=" + form.posTop.value;
+			if(form.left.checked) features += ",left=" + form.posLeft.value;
+
+
+			//window.alert(features);
+			if(window.open("./images/js.png", "maFenetre", features) == null)
+				document.write("Échec de l'ouverture de la fenêtre");
+		}
+	</script>
+</body>
+</html>

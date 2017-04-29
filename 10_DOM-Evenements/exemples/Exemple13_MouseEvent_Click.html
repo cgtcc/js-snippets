@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Les événements de la souris : Clic</title>
+	<style type="text/css">
+		div, span { padding : 20px; }
+		#monDiv   { background-color: #B0B0B0; }
+		#monSpan  { background-color: #C0C0C0;	}
+	</style>
+	<script type="text/javascript" src="events.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", function(){
+
+			document.getElementById("monSpan").addEventListener("mousedown", afficherMsg);
+
+			document.getElementById("clear").addEventListener("click", function(){
+				document.getElementById("txt").value = "";
+			}, false);
+
+		},false);
+
+		function afficherMsg(evt) {
+			var zoneText = document.getElementById("txt");
+			
+			zoneText.value += "Mousedown intercepté : \n" +
+							  ((evt.altKey)   ? "ALT "   : "") +
+							  ((evt.ctrlKey)  ? "CTRL "  : "") +
+							  ((evt.shiftKey) ? "SHIFT " : "") +
+							  ((evt.metaKey)  ? "META "  : "") + "\n" +
+							  "Bouton : " + evt.button + "\n" + 
+							  "Coordonnées locales = (" + evt.clientX + ", " + evt.clientY + ")\n" +
+							  "Coordonnées globales = (" + evt.screenX + ", " + evt.screenY + ")\n" +
+							  "------------------------------------\n";
+		}
+
+	</script>
+</head>
+<body>
+	<form>
+		<fieldset>
+			<legend>Évènements de la souris : <strong>Mouse Down</strong></legend>
+			<div id="monDiv">
+				<span id="monSpan">Je suis inscrit à l'évènement mousedown</span>
+			</div>
+			<textarea id="txt" cols="50" rows="8"></textarea><br />
+			<input type="button" id="clear" value="Effacer" />
+		</fieldset>
+	</form>
+</body>
+</html>

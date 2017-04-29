@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Rechercher la position d'une occurence</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// La méthode search(), toujours de l'objet String, ressemble à indexOf()
+			// mis à part le fait que le paramètre est une expression régulière.
+			// search() retourne la position de la première occurrence trouvée.
+			// Si aucune occurrence n'est trouvée, -1 est retourné.
+
+			var sentence = "Mon mot de passe est 13254.... M'as-tu cru ?" ;
+ 			var result = sentence.search(/\d+/);
+
+			if (result > -1) { // On vérifie que quelque chose a été trouvé
+    			write("La position est " + result); // 3
+			}
+
+		</script>
+	</body>
+</html>

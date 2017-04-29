@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script>
+        var des = []
+        des[0] = "_images/1.png";
+        des[1] = "_images/2.png";
+        des[2] = "_images/3.png";
+        des[3] = "_images/4.png";
+        des[4] = "_images/5.png";
+        des[5] = "_images/6.png";
+
+        setTimeout("changerImage()", 1000);
+
+
+        function changerImage() {
+            for (var x = 0; x < des.length; x++) {
+                document.getElementById("imageDes").src = des[x];
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <img id="imageDes" src="_images/1.png">
+
+
+</body>
+
+</html>

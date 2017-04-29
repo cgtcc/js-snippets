@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Les parenthèses non-capturantes</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Il se peut que dans de longues et complexes regex, il y ait besoin
+			// d'utiliser beaucoup de parenthèses, plus de neuf par exemple, ce qui
+			// peut poser problème puisqu'il ne peut y avoir que neuf parenthèses
+			// capturantes exploitables. Mais toutes ces parenthèses n'ont peut-être
+			// pas besoin de capturer quelque chose, elles peuvent juste être là pour
+			// proposer un choix. Par exemple, si on vérifie une URL,
+			// on peut commencer la regex comme ceci :
+
+			/(https|http|ftp):\/\//.exec("http://www.mehdilahlou.info");
+			
+			var msg;
+
+			switch(RegExp.$1) {
+				case "https" : msg = "Secured Hyper Text Transfer Protocol"; break;
+				case "http"  : msg = "Hyper Text Transfer Protocol";         break;
+				case "ftp"   : msg = "File Transfer Protocol";               break;
+				default      : msg = "Unrecognized protocol";
+			}
+
+			document.write(msg + "<br />");
+
+
+			// Mais si nous n'avons pas besoin que ce soit une parenthèse capturante et
+			// qu'elle soit accessible via RegExp.$1.
+			// Pour la rendre non capturante, on va ajouter ?: au début de la parenthèse,
+			// De cette manière, cette parenthèse n'aura aucune incidence sur
+			// les propriétés $ de RegExp !
+
+			/(?:https|http|ftp):\/\//.exec("http://www.mehdilahlou.info");
+
+			if(RegExp.$1 == "") document.write("Rien n'a été capturé.");
+
+		</script>
+	</body>
+</html>

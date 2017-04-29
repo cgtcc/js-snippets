@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Accès à un élément de type select</title>
+		<script type="text/javascript">
+		//<![CDATA[
+		function showStatus(f) {
+			var index = f.elements["selectionlist"].selectedIndex;
+			if (index == -1) {
+				window.alert("Aucun élément n'est sélectionné");
+			} else {
+				var element = f.elements["selectionlist"].options[index];
+				window.alert("L'élément #" + index +
+							 " (légende: " + element.text +
+							 ", valeur: " + element.value + ") est sélectionné");
+			}
+		}
+		//]]>
+		</script>
+	</head>
+	<body>
+		<form action="" method="get">
+			<fieldset>
+				<select name="selectionlist" size="3">
+					<option value="R">Rouge</option>
+					<option value="G">Vert</option>
+					<option value="B">Bleu</option>
+				</select>
+				<input type="button" value="Show status" onclick="showStatus(this.form);" />
+			</fieldset>
+		</form>
+	</body>
+</html>

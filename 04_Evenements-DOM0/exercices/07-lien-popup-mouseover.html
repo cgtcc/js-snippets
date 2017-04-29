@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <script>
+        function popup() {
+            var rep = window.confirm("Avez-vous changé d'avis?");
+            if (rep) window.location.href = document.links["lienGoogle"].href;
+        }
+    </script>
+</head>
+
+<body>
+    <a href="https://google.ca" name="lienGoogle" onmouseout="popup()">Lien</a>
+</body>
+
+</html>

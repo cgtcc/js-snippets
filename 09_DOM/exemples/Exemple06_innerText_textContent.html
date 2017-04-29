@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>innerText et textContent</title>
+	<script type="text/javascript">
+		window.onload = function(){
+			var div = document.getElementById('myDiv');
+      		var txt = div.textContent || div.innerText || "";
+      		window.alert(txt);
+		};
+	</script>
+</head>
+<body>
+	<div id="myDiv"><p>Un peu de texte et <a href="#top">un lien</a></p></div>
+</body>
+</html>

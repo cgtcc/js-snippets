@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Exercice 01</title>
+	<script type="text/javascript">
+		function sendMsg() {
+			opener.document.myForm.messageRecu.value = document.myForm.message.value;
+		}
+
+		function closeWindow() {
+			var rep = window.confirm("Voulez-vous vraiment fermer la fenêtre ?");
+			if(rep) {
+				opener.document.myForm.messageRecu.value ="Communication interrompue !";
+				window.close();
+			}
+		}		
+	</script>
+</head>
+<body>
+	<form name="myForm">
+		<label for="message">Message à envoyer : <label><input type="text" name="message" />
+		<input type="button" name="envoiMessage" value="Envoyer un message à la fenêtre principale" onclick="sendMsg()"/><br />
+		<label for="messageRecu">Message reçu de la fenêtre principale : <label><input type="text" name="messageRecu" /><br />
+		<input type="button" name="fermer" value="fermer la fenêtre" onclick="closeWindow()"/>
+	</form>
+</body>
+</html>

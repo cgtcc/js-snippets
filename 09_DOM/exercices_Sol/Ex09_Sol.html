@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Série 09 - Exercice 09</title>
+	<style type="text/css">
+		div#nav {
+			list-style-type : none;
+		}
+		a.external {
+			color : red;
+			font-style : italic;
+		}
+		.invisible {
+			visibility : hidden;
+		}
+	</style>
+	<script type="text/javascript">
+		function visibilite(){
+			var elements = document.getElementsByTagName("a");
+			var element;
+			for (var i = 0, c=elements.length; i < c; i++) {
+				element = elements[i];
+				if(/external\sinvisible/.test(element.className)) {
+					element.className = element.className.replace(/ invisible/, "");
+				} else if(/external/.test(element.className)) {
+					 element.className += " invisible";
+				}
+			};
+			
+			var bouton = document.getElementById("btn");
+			// [0] pour récupérer la première legend (la seule et unique)
+			var legend = document.getElementsByTagName("legend")[0];
+			bouton.value = bouton.value.replace(/(invisible|visible)/, alternerVisibleInvisible);
+			legend.innerHTML = legend.innerHTML.replace(/(invisible|visible)/, alternerVisibleInvisible);
+			
+		};
+
+		function alternerVisibleInvisible(match, p1) {
+			return (p1 == "invisible") ? "visible" : "invisible";
+		}
+
+	</script>
+</head>
+<body>
+    <form action="" method="get">
+    	<fieldset>
+    		<legend>Rendre <strong>invisible</strong> les liens externes : Liens avec la classe <em>external</em></legend>
+    		<div id="nav">
+		    	<li><a id = "myLink1" class = "external" href  = "http://www.un_lien_quelconque.com">un lien externe</a></li>
+		    	<li><a id = "myLink2"                    href  = "http://www.un_lien_quelconque.com">un lien interne</a></li>
+		    	<li><a id = "myLink3" class = "external" href  = "http://www.un_lien_quelconque.com">un autre lien externe</a></li>
+			</div>
+			<br />
+	    	<input type  = "button"
+	    		   value = "Rendre invisible les liens externes"
+	    		   id  = "btn"
+	    		   onclick = "visibilite();"/>
+	    </fieldset>
+    </form>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<script type="text/javascript">
+    function validateForm() {
+        var nom = document.forms["Form"]["nom"].value;
+        var prenom = document.forms["Form"]["prenom"].value;
+        var mail = document.forms["Form"]["mail"].value;
+        if (nom !== null || nom !== "", prenom !== null || prenom !== "", mail !== null || mail !== "") {
+            alert("Merci");
+            return false;
+        }
+    }
+
+</script>
+
+<form method="get" name="Form" onsubmit="return validateForm()" action="">
+    <label> Nom :</label> <input type="text" name="nom"></input><br/>
+    <label>Prenom :</label> <input type="text" name="prenom"></input><br/>
+    <label>Mail : </label> <input type="text" name="mail"></input><br/>
+    <input type="submit" value="envoyer"></input>
+
+</form>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Exercice 05</title>
+</head>
+<body>
+<script type="text/javascript">
+    window.onload = function() {
+        with (document.forms[0]) {
+            var d = new Date();
+            elements["day"].selectedIndex   = d.getDate() - 1;
+            elements["month"].selectedIndex = d.getMonth();
+            elements["year"].selectedIndex  = 0;
+        }
+    }
+</script>
+
+<form action="" get="">
+    <fieldset>
+    <script type="text/javascript">
+        var msg = '<select name="day">';
+        for (var i = 1; i < 32; i++) {
+            msg += '<option value='+i+'>'+i+'</option>';
+        };
+        var months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+                      "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+        msg += '</select><select name="month">';
+        for (var i = 0; i < months.length; i++) {
+            msg += '<option value='+(i+1)+'>'+months[i]+'</option>';
+        };
+        msg += '</select><select name="year">';
+        for (var i = new Date().getFullYear(); i > 1899; i--) {
+            msg += '<option value='+i+'>'+i+'</option>';
+        };
+        msg += '</select>';
+
+        document.write(msg);
+    </script>
+</fieldset>
+</form>
+</body>
+</html>
+

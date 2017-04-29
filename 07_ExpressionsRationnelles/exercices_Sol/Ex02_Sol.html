@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 07 - Exercice 02</title>
+		<script type="text/javascript" src="util.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// L'idée ici est de convertir une balise BBCode (langage utilisé par les forums)
+			// de mise en gras ([b]un peu de texte[/b])
+			// en un formatage HTML de ce type : <strong>un peu de texte</strong>.
+
+			var text = "Du texte [b] et un peu de texte en gras[/b]. \n" +
+					   "Encore un texte [b]et un autre en gras[/b] pour finir.";
+			
+			write("Avant : " + text);
+			text = text.replace(/\[b\](.*)\[\/b\]/g, '<strong>$1</strong>');
+			write("Après : " + text);
+		</script>
+	</body>
+</html>

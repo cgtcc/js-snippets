@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Les intervalles de caractères [ - ]</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			// Toujours au sein des classes de caractères, il est possible
+			// de spécifier un intervalle de caractères.
+			// Si n'importe quelle lettre de l'alphabet peut convenir,
+			// il est donc inutile de les écrire toutes : écrire [a-z] suffit.
+			
+			write(/[a-z]/.test("m"));   // Affiche true
+			write(/[a-z]/.test("123")); // Affiche false
+			
+			// Il faut prendre en compte les les caractères accentués ne font
+			// pas partie de l'intervalle.
+			
+			write(/[a-z]/.test("é"));                // Affiche false
+			write(/[a-zâäàéèùêëîïôöçñ]/.test("éè")); // Affiche true
+
+			</script>
+	</body>
+</html>

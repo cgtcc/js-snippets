@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>L'attribut htmlFor</title>
+	<script type="text/javascript">
+		function resume(){
+			var choix = document.getElementsByName("language");
+			// Déterminer l'indice de la case cochée : i
+			for(var i = 0, c = choix.length; i < c && !choix[i].checked; i++);
+			// Récupérer tous les éléments label
+			var labels = document.getElementsByTagName("label");
+			// Chercher l'indice du label de la case cochée : j
+			for(var j = 0, c = labels.length; j < c && labels[j].htmlFor != choix[i].id; j++);
+			// Récupérer le texte du label correspondant
+			var msg = "Votre langage de programmation préféré : " +
+					  labels[j].firstChild.nodeValue + "\n";
+			window.alert(msg);
+		}
+	</script>
+</head>
+<body>
+	<form action = "" method = "get">
+		<fieldset>
+			<legend><strong>Votre langage de programmation préféré !</strong></legend>
+			<input type="radio" name="language" id="language_js" value="js" checked="checked" />
+			<label for="language_js">JavaScript</label><br />
+			<input type="radio" name="language" id="language_as" value="as" />
+			<label for="language_as">ActionScript</label><br />
+			<input type="radio" name="language" id="language_php" value="php" />
+			<label for="language_php">PHP Hypertext Preprocessor</label><br />
+		</fieldset>
+		<input type="button" value="Résumer" onclick="resume();">
+	</form>
+</body>
+</html>

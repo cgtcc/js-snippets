@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Title Goes Here</title>
+
+    <script>
+        if (!window.addEventListener) {
+            window.addEventListener = function (type, listener, useCapture) {
+                window.attachEvent("on" + type, function () {
+                    listener(event);
+                });
+            }
+        }
+
+        if (!window.removeEventListener) {
+            window.removeEventListener = function (type, listener, useCapture) {
+                window.detachEvent("on" + type, function () {
+                    listener(event);
+                });
+            }
+        }
+
+
+
+        window.addEventListener("load", function () {
+
+            document.getElementById("mainDiv").addEventListener("mouseover", "test");
+
+
+        }, false);
+
+
+
+
+
+
+        function bouton() {
+            var d = document.createElement('div');
+            d.setAttribute("id", "mainDiv");
+            var f = document.createElement('img');
+            f.setAttribute('src', 'button_static.png');
+            d.appendChild(f)
+            document.getElementsByTagName('body')[0].appendChild(d);
+        }
+    </script>
+</head>
+
+<body onload="bouton(); ">
+</body>
+
+</html>

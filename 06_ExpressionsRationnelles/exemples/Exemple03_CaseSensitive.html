@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Sensibilité à la casse</title>
+		<script type="text/javascript" src="io.js"></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			write(/Océan/.test("L'océan bleu.")); // Affiche false
+			
+			//Il est possible, grâce aux options, de dire à la regex d'ignorer la casse,
+			//c'est-à-dire de rechercher indifféremment les majuscules et les minuscules.
+			//Cette option s'appelle i, et comme chaque option (nous en verrons d'autres),
+			//elle se place juste après le slash de fermeture de la regex :
+			
+			write(/Océan/i.test("L'océan bleu.")); // Affiche true
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Exercice 03</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            /*
+             * Calcule et retourne le nombre de jours du mois de l'année passés en paramètres.
+             */
+            function getNbJours(mois, annee) {
+
+                var nbJours = 31;
+                // Calculer le nombre de jours que compte le mois de l'année entrées par l'utilisateur
+                if(mois == 4 || mois == 6 || mois == 9 || mois == 11) {
+                    // Avril, Juin, Septembre ou Novembre : ces mois de l'année comptent 30 jours
+                    nbJours = 30;
+                } else {
+                    if(mois == 2) {
+                        // Le mois de février compte 29 ou 28 jours selon si l'année est bissextile ou pas 
+                        if(annee % 4 == 0 && annee % 100 != 0 || annee % 400 == 0) {
+                            // Cette année est bissextile : Le mois de février compte 29 jours
+                            nbJours = 29;
+                        } else {
+                            // Cette année est normale (compte 365 jours)
+                            // Par conséquent : Le mois de février compte 28 jours
+                            nbJours = 28;
+                        }
+                    }
+                }
+
+                return nbJours;
+            }
+
+            function change() {
+                    var myForm = document.forms[0];
+                    var month  = myForm.elements["month"].selectedIndex+1;
+                    var year   = (new Date().getFullYear()) - myForm.elements["year"].selectedIndex;
+                    var nbDays = getNbJours(month, year);
+                    var nbDaysInList = myForm.elements["day"].options.length;
+
+                    if(nbDays < nbDaysInList) {
+                        myForm.elements["day"].options.length = nbDays;
+                    } else if(nbDays > nbDaysInList){
+                        do{
+							myForm.elements["day"].options[nbDaysInList] = new Option(nbDaysInList+1, nbDaysInList+1);
+							nbDaysInList++;
+                        }while(nbDaysInList < nbDays);
+                    }
+            }
+
+            window.onload = function() {
+                with (document.forms[0]) {
+                    var d = new Date();
+                    elements["day"].selectedIndex = d.getDate() - 1;
+                    elements["month"].selectedIndex = d.getMonth();
+                    elements["year"].selectedIndex = 0;
+
+                    elements["month"].onchange = change;
+                    elements["year" ].onchange = change;
+
+
+                }
+                change();
+            }
+        </script>
+
+        <form action="" get="">
+            <fieldset>
+            <script type="text/javascript">
+                
+                var d = new Date();
+
+                var msg = '<select name="day">';
+                var nbJours = getNbJours(d.getMonth()+1, d.getFullYear());
+                for (var i = 1; i < nbJours+1; i++) {
+                    msg += '<option value='+i+'>'+i+'</option>';
+                };
+                var months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
+                              "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+                msg += '</select><select name="month">';
+                for (var i = 1; i < 13; i++) {
+                    msg += '<option value='+i+'>'+months[i-1]+'</option>';
+                };
+                msg += '</select><select name="year">';
+                for (var i = d.getFullYear(); i > 1899; i--) {
+                    msg += '<option value='+i+'>'+i+'</option>';
+                };
+                msg += '</select>';
+
+                document.write(msg);
+            </script>
+        </fieldset>
+        </form>
+    </body>
+</html>
+

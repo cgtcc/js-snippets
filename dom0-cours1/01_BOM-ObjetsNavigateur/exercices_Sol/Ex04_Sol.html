@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Série 01 - Exercice 04</title>
+	<script type="text/javascript">
+		
+		window.onload=reception;
+
+		function extractQueryString(){
+			var donnees;
+			var variables;
+			var position, variable, valeur;
+			if (window.location.search != "") {
+				donnees   = window.location.search.substring(1).split("&");
+				variables = new Array();
+				for (var i=0; i < donnees.length; i++) {
+					position = donnees[i].indexOf("=");
+					variable = donnees[i].substring(0,position);
+					valeur = decodeURIComponent(donnees[i].substring(position+1));
+					variables[variable] = valeur;
+				}
+				return variables; 
+			}
+		}
+		
+		function reception() {
+			var variables = extractQueryString();
+			if(variables != undefined) {
+				var all = true;
+				for(variable in variables) {
+					if(variables[variable] != "")
+						document.coordonnees[variable].value = variables[variable];
+					else	
+						all = false;
+				}
+				if(all) window.alert("Merci");
+			}
+		}
+
+	</script>
+	</head>
+	<body>
+		<form name="coordonnees" action="Ex04_Sol.html" method="get">
+			<fieldset>
+				<legend><b>Vos coordonnées</b></legend>
+				<label>Nom :   </label>
+				<input type="text" name="nom" size="40" maxlength="256" /><br />
+				<label>Prénom :</label>
+				<input type="text" name="prenom" size="40" maxlength="256" /><br />
+				<label>Mail :  </label>
+				<input type="text" name="mail" size="40" maxlength="256"/><br />
+				<input type="submit" value="Envoyer" />
+			</fieldset>
+		</form>
+	</body>
+</html>

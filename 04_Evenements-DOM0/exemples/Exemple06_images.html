@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Évènement lié à une image</title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var etats = {
+					"hover"  : "./_images/the2.jpg",
+					"normal" : "./_images/the1.jpg"
+				}
+				var img = document.images["the"];
+				img.src = etats["normal"];
+				img.onmouseover = function() {
+					changeImage(img.name, etats["hover"]);
+				}
+				img.onmouseout = function() {
+					changeImage(img.name, etats["normal"]);
+				}
+
+
+			};
+
+			function changeImage(name, url) {
+				if (document.images[name]) {
+					document.images[name].src = url;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<img name = "the" id = "the" alt  = "the"/>
+		</div>
+ 	</body>
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script type="text/javascript">
+	for(var prop in window.location) {
+		if(typeof(window.location[prop]) != "function")
+			console.log(prop + " : " + window.location[prop]);
+	}
+</script>
+</body>
+</html>

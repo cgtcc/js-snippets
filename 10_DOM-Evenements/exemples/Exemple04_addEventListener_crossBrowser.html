@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>attachEvent() pou MSIE</title>
+	<script type="text/javascript">
+		
+		if (!window.addEventListener) {
+			window.addEventListener = function (type, listener, useCapture) {
+				window.attachEvent('on' + type, function() {
+					listener(event);
+				});
+			}
+		}
+
+		window.addEventListener("load", afficherMsg, false);
+
+		function afficherMsg() {
+			window.alert("La page est complètement chargée.");
+		}
+	
+	</script>
+</head>
+<body>
+	<img id="image" src="http://mlahlou.webdev.cmaisonneuve.qc.ca/852/image.jpg"
+		 width="800" height="600" title="Belle plage" />
+</body>
+</html>

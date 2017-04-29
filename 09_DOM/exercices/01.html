@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Title Goes Here</title>
+
+    <script>
+        function formulaire() {
+
+            var d = document.createElement('div');
+
+            var f = document.createElement('form');
+            f.method = "post";
+            f.setAttribute('action', '#');
+
+            var b = document.createElement('input');
+            b.setAttribute('type', "submit");
+            b.setAttribute('value', "Submit");
+
+            d.appendChild(f)
+            f.appendChild(b);
+
+
+            // On crée la liste, et on boucle pour ajouter chaque item
+            var uList = document.createElement("ul"),
+                uItem;
+
+            for (var i = 0; i < 3; i++) {
+                uItem = document.createElement("li");
+
+                uItem.appendChild(document.createTextNode("item " + (i + 1)));
+                uList.appendChild(uItem);
+
+            }
+
+
+
+            document.getElementsByTagName('body')[0].appendChild(d);
+
+            document.getElementsByTagName('body')[0].appendChild(uList);
+            uList.id = "listeItems";
+
+            var list = document.getElementById("listeItems");   // Get the <ul> element with id="myList"
+            b.onclick = function () {
+                // list.removeChild(list.childNodes[0]);
+                //  console.log(list.lastChild);
+
+                list.removeChild(list.lastChild);
+
+                return false;
+            }
+
+        }
+
+        function texte() {
+            var d = document.createElement('div');
+            var p = document.createElement('p');
+
+            var texte = [
+                {
+                    "banniere":
+                    {
+                        "h1": "Bla Bla Bla",
+                        "p": "sous titre bannière"
+                    }
+                },
+                {
+                    ""
+            "h2": "Lorem ipsum sit dolor et amet dos stri angure.",
+                    "p": "Texte paragraphe"
+                }
+            ];
+            console.log(texte[0]);
+
+            for (var index = 0; index < texte.length; index++) {
+
+                var element = texte[index];
+
+                // showContent = createElement()
+
+
+            }
+        }
+    </script>
+</head>
+
+<body onload="formulaire(); texte()">
+</body>
+
+</html>
